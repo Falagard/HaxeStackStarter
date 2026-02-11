@@ -16,4 +16,7 @@
     <assets path="migrations" />
     <assets path="static" />
 	
+	<postbuild command="copy-server-hdlls.bat" if="hl" />
+	<postbuild command="copy-server-hdlls.bat" if="hlc" />
+
 </project>
