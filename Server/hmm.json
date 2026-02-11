@@ -1,35 +1,35 @@
 {
-  "dependencies": [
-    {
-      "name": "Json2Object",
-      "type": "haxelib",
-      "version": null
-    },
-    {
-      "name": "SideWinder",
-      "type": "git",
-      "dir": null,
-      "ref": "0a28ec698f18a18695da1b509d5c46f1c450d2b8",
-      "url": "https://github.com/Falagard/SideWinder"
-    },
-    {
-      "name": "haxe-injection",
-      "type": "git",
-      "dir": null,
-      "ref": "7bb93913446ce60cacac1fb695038d8c204aec0f",
-      "url": "https://github.com/paulsgcross/haxe-injection"
-    },
-    {
-      "name": "lime",
-      "type": "haxelib",
-      "version": null
-    },
-    {
-      "name": "snake-server",
-      "type": "git",
-      "dir": null,
-      "ref": "fc3a072e6f6e7480a84d674dd1f731b52d9752ac",
-      "url": "https://github.com/Falagard/snake-server"
-    }
-  ]
+    "dependencies": [
+        {
+            "name": "Json2Object",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "SideWinder",
+            "type": "git",
+            "dir": null,
+            "ref": "006ddaf96effdaf8bf69007bab6bbd7d96c55091",
+            "url": "https://github.com/Falagard/SideWinder"
+        },
+        {
+            "name": "haxe-injection",
+            "type": "git",
+            "dir": null,
+            "ref": "7bb93913446ce60cacac1fb695038d8c204aec0f",
+            "url": "https://github.com/paulsgcross/haxe-injection"
+        },
+        {
+            "name": "lime",
+            "type": "haxelib",
+            "version": null
+        },
+        {
+            "name": "snake-server",
+            "type": "git",
+            "dir": null,
+            "ref": "fc3a072e6f6e7480a84d674dd1f731b52d9752ac",
+            "url": "https://github.com/Falagard/snake-server"
+        }
+    ]
 }

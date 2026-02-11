@@ -5,7 +5,7 @@ import sidewinder.SideWinderRequestHandler;
 import hx.injection.ServiceCollection;
 import sidewinder.DI;
 import sidewinder.HybridLogger;
-import sidewinder.CacheService;
+import sidewinder.InMemoryCacheService;
 import sidewinder.ICacheService;
 import sidewinder.Database;
 import lime.app.Application;
@@ -37,7 +37,7 @@ class ServerBootstrap extends Application {
 	public function init():Void {
 		// Initialize database
 		Database.runMigrations();
-		HybridLogger.init(true);
+		HybridLogger.init();
 
 		// Configure SideWinderRequestHandler
 		BaseHTTPRequestHandler.protocolVersion = config.protocol;
@@ -49,7 +49,7 @@ class ServerBootstrap extends Application {
 
 		// DI Initialization
 		DI.init(c -> {
-			c.addService(ServiceType.Singleton, ICacheService, CacheService);
+			c.addService(ServiceType.Singleton, ICacheService, InMemoryCacheService);
 			configureServices(c);
 		});
 
