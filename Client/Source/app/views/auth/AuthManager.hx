@@ -39,6 +39,12 @@ class AuthManager {
 	}
 
 	function verifyStoredToken(token:String, ?onAuthenticated:Void->Void):Void {
+		// Inject token into CookieJar so the request includes it
+		if (appState.asyncServices != null && appState.asyncServices.cookieJar != null) {
+			var cookieStr = "session_token=" + token + "; Path=/; Max-Age=604800";
+			appState.asyncServices.cookieJar.setCookie(cookieStr, appState.asyncServices.baseUrl);
+		}
+
 		// Call getCurrentUser to verify the token
 		untyped appState.asyncServices.auth.getCurrentUserAsync(function(user:Null<UserPublic>) {
 			if (user != null) {

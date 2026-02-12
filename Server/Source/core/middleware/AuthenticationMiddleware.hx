@@ -21,6 +21,15 @@ class AuthenticationMiddleware {
 				var sessionToken:String = null;
 				var authHeader = req.headers.get("Authorization");
 
+				// Debug logging
+				trace("[AuthMiddleware] Checking auth for: " + req.path);
+				trace("[AuthMiddleware] Authorization Header: " + authHeader);
+				if (req.cookies != null) {
+					trace("[AuthMiddleware] Cookies: " + req.cookies);
+				} else {
+					trace("[AuthMiddleware] No cookies found");
+				}
+
 				if (authHeader != null && authHeader.indexOf("Bearer ") == 0) {
 					sessionToken = authHeader.substring(7);
 				}

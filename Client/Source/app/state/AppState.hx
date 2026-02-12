@@ -34,6 +34,13 @@ class AppState {
 	public function setAuthentication(user:UserPublic, token:String):Void {
 		currentUser.value = user;
 		authToken.value = token;
+
+		// Inject into CookieJar for API requests
+		if (asyncServices != null && asyncServices.cookieJar != null) {
+			var cookieStr = "session_token=" + token + "; Path=/; Max-Age=604800";
+			asyncServices.cookieJar.setCookie(cookieStr, asyncServices.baseUrl);
+		}
+
 		// Store token in local storage for persistence
 		#if js
 		try {
@@ -47,6 +54,11 @@ class AppState {
 	public function clearAuthentication():Void {
 		currentUser.value = null;
 		authToken.value = null;
+
+		if (asyncServices != null && asyncServices.cookieJar != null) {
+			asyncServices.cookieJar.clear();
+		}
+
 		#if js
 		try {
 			js.Browser.window.localStorage.removeItem("authToken");
