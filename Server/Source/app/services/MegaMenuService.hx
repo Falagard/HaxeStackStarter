@@ -18,7 +18,7 @@ class MegaMenuService implements IMegaMenuService {
 	public function listMenus():Array<MenuDTO> {
 		var conn = db.acquire();
 		try {
-			var sql = "SELECT * FROM mega_menus ORDER BY sort_order ASC";
+			var sql = "SELECT * FROM menus ORDER BY sort_order ASC";
 			var rs = conn.request(sql);
 			var menus = [];
 			while (rs.hasNext()) {
@@ -38,7 +38,7 @@ class MegaMenuService implements IMegaMenuService {
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("id", id);
-			var sql = "SELECT * FROM mega_menus WHERE id = @id";
+			var sql = "SELECT * FROM menus WHERE id = @id";
 			var rs = conn.request(db.buildSql(sql, params));
 			if (!rs.hasNext()) {
 				db.release(conn);
@@ -65,7 +65,7 @@ class MegaMenuService implements IMegaMenuService {
 			params.set("sort_order", menu.sortOrder);
 			params.set("visibility_config", haxe.Json.stringify(menu.visibilityConfig));
 
-			var sql = "INSERT INTO mega_menus (name, sort_order, visibility_config) VALUES (@name, @sort_order, @visibility_config)";
+			var sql = "INSERT INTO menus (name, sort_order, visibility_config) VALUES (@name, @sort_order, @visibility_config)";
 			conn.request(db.buildSql(sql, params));
 			var id = conn.lastInsertId();
 			db.release(conn);
@@ -85,7 +85,7 @@ class MegaMenuService implements IMegaMenuService {
 			params.set("sort_order", menu.sortOrder);
 			params.set("visibility_config", haxe.Json.stringify(menu.visibilityConfig));
 
-			var sql = "UPDATE mega_menus SET name = @name, sort_order = @sort_order, visibility_config = @visibility_config WHERE id = @id";
+			var sql = "UPDATE menus SET name = @name, sort_order = @sort_order, visibility_config = @visibility_config WHERE id = @id";
 			conn.request(db.buildSql(sql, params));
 			db.release(conn);
 			return true;
@@ -100,7 +100,7 @@ class MegaMenuService implements IMegaMenuService {
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("id", id);
-			var sql = "DELETE FROM mega_menus WHERE id = @id";
+			var sql = "DELETE FROM menus WHERE id = @id";
 			conn.request(db.buildSql(sql, params));
 			db.release(conn);
 			return true;
@@ -116,7 +116,7 @@ class MegaMenuService implements IMegaMenuService {
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("menu_id", menuId);
-			var sql = "SELECT * FROM mega_menu_sections WHERE menu_id = @menu_id ORDER BY sort_order ASC";
+			var sql = "SELECT * FROM menu_sections WHERE menu_id = @menu_id ORDER BY sort_order ASC";
 			var rs = conn.request(db.buildSql(sql, params));
 			var sections = [];
 			while (rs.hasNext()) {
@@ -141,7 +141,7 @@ class MegaMenuService implements IMegaMenuService {
 			params.set("title", section.title);
 			params.set("sort_order", section.sortOrder);
 
-			var sql = "INSERT INTO mega_menu_sections (menu_id, title, sort_order) VALUES (@menu_id, @title, @sort_order)";
+			var sql = "INSERT INTO menu_sections (menu_id, title, sort_order) VALUES (@menu_id, @title, @sort_order)";
 			conn.request(db.buildSql(sql, params));
 			var id = conn.lastInsertId();
 			db.release(conn);
@@ -160,7 +160,7 @@ class MegaMenuService implements IMegaMenuService {
 			params.set("title", section.title);
 			params.set("sort_order", section.sortOrder);
 
-			var sql = "UPDATE mega_menu_sections SET title = @title, sort_order = @sort_order WHERE id = @id";
+			var sql = "UPDATE menu_sections SET title = @title, sort_order = @sort_order WHERE id = @id";
 			conn.request(db.buildSql(sql, params));
 			db.release(conn);
 			return true;
@@ -175,7 +175,7 @@ class MegaMenuService implements IMegaMenuService {
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("id", id);
-			var sql = "DELETE FROM mega_menu_sections WHERE id = @id";
+			var sql = "DELETE FROM menu_sections WHERE id = @id";
 			conn.request(db.buildSql(sql, params));
 			db.release(conn);
 			return true;
@@ -191,7 +191,7 @@ class MegaMenuService implements IMegaMenuService {
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("section_id", sectionId);
-			var sql = "SELECT * FROM mega_menu_items WHERE section_id = @section_id ORDER BY sort_order ASC";
+			var sql = "SELECT * FROM menu_items WHERE section_id = @section_id ORDER BY sort_order ASC";
 			var rs = conn.request(db.buildSql(sql, params));
 			var items = [];
 			while (rs.hasNext()) {
@@ -220,7 +220,7 @@ class MegaMenuService implements IMegaMenuService {
 			params.set("sort_order", item.sortOrder);
 			params.set("visibility_config", haxe.Json.stringify(item.visibilityConfig));
 
-			var sql = "INSERT INTO mega_menu_items (section_id, label, description, url, icon, item_type, custom_component, sort_order, visibility_config) VALUES (@section_id, @label, @description, @url, @icon, @item_type, @custom_component, @sort_order, @visibility_config)";
+			var sql = "INSERT INTO menu_items (section_id, label, description, url, icon, item_type, custom_component, sort_order, visibility_config) VALUES (@section_id, @label, @description, @url, @icon, @item_type, @custom_component, @sort_order, @visibility_config)";
 			conn.request(db.buildSql(sql, params));
 			var id = conn.lastInsertId();
 			db.release(conn);
@@ -245,7 +245,7 @@ class MegaMenuService implements IMegaMenuService {
 			params.set("sort_order", item.sortOrder);
 			params.set("visibility_config", haxe.Json.stringify(item.visibilityConfig));
 
-			var sql = "UPDATE mega_menu_items SET label = @label, description = @description, url = @url, icon = @icon, item_type = @item_type, custom_component = @custom_component, sort_order = @sort_order, visibility_config = @visibility_config WHERE id = @id";
+			var sql = "UPDATE menu_items SET label = @label, description = @description, url = @url, icon = @icon, item_type = @item_type, custom_component = @custom_component, sort_order = @sort_order, visibility_config = @visibility_config WHERE id = @id";
 			conn.request(db.buildSql(sql, params));
 			db.release(conn);
 			return true;
@@ -260,7 +260,7 @@ class MegaMenuService implements IMegaMenuService {
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("id", id);
-			var sql = "DELETE FROM mega_menu_items WHERE id = @id";
+			var sql = "DELETE FROM menu_items WHERE id = @id";
 			conn.request(db.buildSql(sql, params));
 			db.release(conn);
 			return true;
@@ -276,7 +276,7 @@ class MegaMenuService implements IMegaMenuService {
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("item_id", itemId);
-			var sql = "SELECT * FROM mega_menu_item_metadata WHERE item_id = @item_id";
+			var sql = "SELECT * FROM menu_item_metadata WHERE item_id = @item_id";
 			var rs = conn.request(db.buildSql(sql, params));
 			var metadata = [];
 			while (rs.hasNext()) {
@@ -303,7 +303,7 @@ class MegaMenuService implements IMegaMenuService {
 			params.set("item_id", itemId);
 			params.set("key_name", metadata.keyName);
 			params.set("value", metadata.value);
-			var sql = "INSERT INTO mega_menu_item_metadata (item_id, key_name, value) VALUES (@item_id, @key_name, @value)";
+			var sql = "INSERT INTO menu_item_metadata (item_id, key_name, value) VALUES (@item_id, @key_name, @value)";
 			conn.request(db.buildSql(sql, params));
 			var id = conn.lastInsertId();
 			db.release(conn);
@@ -321,7 +321,7 @@ class MegaMenuService implements IMegaMenuService {
 			params.set("id", id);
 			params.set("key_name", metadata.keyName);
 			params.set("value", metadata.value);
-			var sql = "UPDATE mega_menu_item_metadata SET key_name = @key_name, value = @value WHERE id = @id";
+			var sql = "UPDATE menu_item_metadata SET key_name = @key_name, value = @value WHERE id = @id";
 			conn.request(db.buildSql(sql, params));
 			db.release(conn);
 			return true;
@@ -336,7 +336,7 @@ class MegaMenuService implements IMegaMenuService {
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("id", id);
-			var sql = "DELETE FROM mega_menu_item_metadata WHERE id = @id";
+			var sql = "DELETE FROM menu_item_metadata WHERE id = @id";
 			conn.request(db.buildSql(sql, params));
 			db.release(conn);
 			return true;

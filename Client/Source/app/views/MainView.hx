@@ -65,7 +65,7 @@ class MainView extends VBox {
 
 		// Handle deep link from URL on app load, or navigate to default page 3
 		if (!pageNavigator.handleInitialDeepLink()) {
-			pageNavigator.navigate("3", null);
+			pageNavigator.navigate("1", null);
 		}
 
 		// --- MegaMenu Integration ---
