@@ -21,6 +21,7 @@ import app.models.AuthModels.LoginRequest;
 import app.util.PageLoader;
 import app.util.PageSerializer;
 import app.util.VersionRestorer;
+import app.services.DatabaseSeeder;
 
 class ServerApp extends ServerBootstrap {
 	override public function configureServices(services:ServiceCollection):Void {
@@ -30,6 +31,13 @@ class ServerApp extends ServerBootstrap {
 		services.addService(ServiceType.Scoped, PageLoader, PageLoader);
 		services.addService(ServiceType.Scoped, PageSerializer, PageSerializer);
 		services.addService(ServiceType.Scoped, VersionRestorer, VersionRestorer);
+		services.addService(ServiceType.Scoped, DatabaseSeeder, DatabaseSeeder);
+	}
+
+	override public function init():Void {
+		super.init();
+		var seeder = DI.get(DatabaseSeeder);
+		seeder.seed();
 	}
 
 	override public function configureMiddleware():Void {
