@@ -44,7 +44,10 @@ class PageNavigator {
 				var parts = hash.substr(1).split(':');
 				var pageId = parts[0];
 				var anchor = parts.length > 1 ? parts[1] : null;
-				navigate(pageId, anchor);
+				// Avoid re-navigating if we're already on this page/anchor
+				if (pageId != instance.currentPage || anchor != instance.currentAnchor) {
+					navigate(pageId, anchor);
+				}
 			}
 		};
 		#end
@@ -67,7 +70,11 @@ class PageNavigator {
 		// Fetch page info asynchronously and trigger rendering
 		cmsManager.getPage(Std.parseInt(pageId), function(response:GetPageResponse) {
 			if (response.success && response.page != null) {
-				renderer.renderPage(response.page, anchor);
+				// Renderer is handled by MainView observing PageNavigator events,
+				// or we should consolidate it here. But removing it prevents double-render
+				// if MainView is also doing it.
+				// renderer.renderPage(response.page, anchor);
+
 				// Fire onNavigate hooks
 				for (hook in onNavigate) {
 					hook();
