@@ -1,6 +1,7 @@
 package core;
 
-import sidewinder.SideWinderServer;
+import sidewinder.IWebServer;
+import sidewinder.WebServerFactory;
 import sidewinder.SideWinderRequestHandler;
 import hx.injection.ServiceCollection;
 import sidewinder.DI;
@@ -20,7 +21,7 @@ import hx.injection.ServiceType;
 
 class ServerBootstrap extends Application {
 	public var config:ServerConfig;
-	public var httpServer:SideWinderServer;
+	public var httpServer:IWebServer;
 	public var router:Router;
 	public var cache:ICacheService;
 
@@ -67,7 +68,11 @@ class ServerBootstrap extends Application {
 		configureRoutes(router);
 
 		// Start server
-		httpServer = new SideWinderServer(new Host(config.host), config.port, SideWinderRequestHandler, true, config.directory);
+
+		// Start server
+		httpServer = WebServerFactory.create(sidewinder.WebServerFactory.WebServerType.CivetWeb, config.host, config.port, SideWinderRequestHandler,
+			config.directory);
+		httpServer.start();
 	}
 
 	public function configureServices(services:ServiceCollection):Void {
