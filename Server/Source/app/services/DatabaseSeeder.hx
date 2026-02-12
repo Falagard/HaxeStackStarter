@@ -7,8 +7,9 @@ import app.services.IAuthService;
 import app.services.ICmsService;
 import app.models.AuthModels.RegisterRequest;
 import app.models.CmsModels.CreatePageRequest;
+import hx.injection.Service;
 
-class DatabaseSeeder {
+class DatabaseSeeder implements Service {
 	var db:IDatabaseService;
 	var auth:IAuthService;
 	var cms:ICmsService;
