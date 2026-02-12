@@ -2,15 +2,21 @@ package app.services;
 
 import app.models.AuthModels;
 import app.services.IAuthService;
-import sidewinder.Database;
+// import sidewinder.Database;
+import sidewinder.IDatabaseService;
 import sidewinder.Router;
+import sidewinder.DI;
 import Date;
 import haxe.crypto.Sha256;
 
 class AuthService implements IAuthService {
 	private static final SESSION_DURATION_DAYS = 30;
 
-	public function new() {}
+	var db:IDatabaseService;
+
+	public function new(?db:IDatabaseService) {
+		this.db = db != null ? db : DI.get(IDatabaseService);
+	}
 
 	private function getConstructorArgs():Array<String> {
 		return [];
@@ -27,13 +33,13 @@ class AuthService implements IAuthService {
 
 		// Check if user exists
 		try {
-			var conn = Database.acquire();
+			var conn = db.acquire();
 			var params = new Map<String, Dynamic>();
 			params.set("email", request.email);
 			var sql = "SELECT id FROM users WHERE email=@email";
-			var rs = conn.request(Database.buildSql(sql, params));
+			var rs = conn.request(db.buildSql(sql, params));
 			var rec = rs.next();
-			Database.release(conn);
+			db.release(conn);
 
 			if (rec != null) {
 				return {success: false, error: "Email already registered"};
@@ -50,7 +56,7 @@ class AuthService implements IAuthService {
 		var now = Date.now();
 
 		try {
-			var conn = Database.acquire();
+			var conn = db.acquire();
 			var params = new Map<String, Dynamic>();
 			params.set("id", userId);
 			params.set("email", request.email);
@@ -61,8 +67,8 @@ class AuthService implements IAuthService {
 
 			var sql = "INSERT INTO users (id, email, username, password_hash, created_at, updated_at, is_active, email_verified) "
 				+ "VALUES (@id, @email, @username, @password_hash, @created_at, @updated_at, 1, 0)";
-			conn.request(Database.buildSql(sql, params));
-			Database.release(conn);
+			conn.request(db.buildSql(sql, params));
+			db.release(conn);
 		} catch (e:Dynamic) {
 			return {success: false, error: "Failed to create user"};
 		}
@@ -88,14 +94,14 @@ class AuthService implements IAuthService {
 		var user:Null<User> = null;
 
 		try {
-			var conn = Database.acquire();
+			var conn = db.acquire();
 			var params = new Map<String, Dynamic>();
 			params.set("identifier", request.emailOrUsername);
 
 			var sql = "SELECT * FROM users WHERE (email=@identifier OR username=@identifier) AND is_active=1";
-			var rs = conn.request(Database.buildSql(sql, params));
+			var rs = conn.request(db.buildSql(sql, params));
 			var rec = rs.next();
-			Database.release(conn);
+			db.release(conn);
 
 			if (rec != null) {
 				user = recordToUser(rec);
@@ -145,13 +151,13 @@ class AuthService implements IAuthService {
 
 	public function invalidateSession(token:String):Bool {
 		try {
-			var conn = Database.acquire();
+			var conn = db.acquire();
 			var params = new Map<String, Dynamic>();
 			params.set("token", token);
 
 			var sql = "DELETE FROM sessions WHERE token=@token";
-			conn.request(Database.buildSql(sql, params));
-			Database.release(conn);
+			conn.request(db.buildSql(sql, params));
+			db.release(conn);
 
 			return true;
 		} catch (e:Dynamic) {
@@ -202,7 +208,7 @@ class AuthService implements IAuthService {
 
 	public function validateSessionToken(token:String):Null<User> {
 		try {
-			var conn = Database.acquire();
+			var conn = db.acquire();
 			var params = new Map<String, Dynamic>();
 			params.set("token", token);
 			params.set("now", Date.now().getTime());
@@ -210,9 +216,9 @@ class AuthService implements IAuthService {
 			var sql = "SELECT u.* FROM users u "
 				+ "INNER JOIN sessions s ON s.user_id = u.id "
 				+ "WHERE s.token=@token AND s.expires_at > @now AND u.is_active=1";
-			var rs = conn.request(Database.buildSql(sql, params));
+			var rs = conn.request(db.buildSql(sql, params));
 			var rec = rs.next();
-			Database.release(conn);
+			db.release(conn);
 
 			if (rec != null) {
 				return recordToUser(rec);
@@ -229,7 +235,7 @@ class AuthService implements IAuthService {
 		var expiresAt = Date.fromTime(now.getTime() + (SESSION_DURATION_DAYS * 24 * 60 * 60 * 1000.0));
 
 		try {
-			var conn = Database.acquire();
+			var conn = db.acquire();
 			var params = new Map<String, Dynamic>();
 			params.set("id", sessionId);
 			params.set("user_id", userId);
@@ -241,9 +247,9 @@ class AuthService implements IAuthService {
 
 			var sql = "INSERT INTO sessions (id, user_id, token, expires_at, created_at, ip_address, user_agent) "
 				+ "VALUES (@id, @user_id, @token, @expires_at, @created_at, @ip_address, @user_agent)";
-			var builtSql = Database.buildSql(sql, params);
+			var builtSql = db.buildSql(sql, params);
 			conn.request(builtSql);
-			Database.release(conn);
+			db.release(conn);
 
 			return {
 				id: sessionId,
@@ -261,14 +267,14 @@ class AuthService implements IAuthService {
 
 	private function getUserById(id:String):Null<User> {
 		try {
-			var conn = Database.acquire();
+			var conn = db.acquire();
 			var params = new Map<String, Dynamic>();
 			params.set("id", id);
 
 			var sql = "SELECT * FROM users WHERE id=@id";
-			var rs = conn.request(Database.buildSql(sql, params));
+			var rs = conn.request(db.buildSql(sql, params));
 			var rec = rs.next();
-			Database.release(conn);
+			db.release(conn);
 
 			if (rec != null) {
 				return recordToUser(rec);
@@ -280,14 +286,14 @@ class AuthService implements IAuthService {
 
 	private function getUserByEmail(email:String):Null<User> {
 		try {
-			var conn = Database.acquire();
+			var conn = db.acquire();
 			var params = new Map<String, Dynamic>();
 			params.set("email", email);
 
 			var sql = "SELECT * FROM users WHERE email=@email AND is_active=1";
-			var rs = conn.request(Database.buildSql(sql, params));
+			var rs = conn.request(db.buildSql(sql, params));
 			var rec = rs.next();
-			Database.release(conn);
+			db.release(conn);
 
 			if (rec != null) {
 				return recordToUser(rec);

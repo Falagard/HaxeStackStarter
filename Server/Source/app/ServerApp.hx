@@ -18,12 +18,18 @@ import app.services.CmsService;
 import app.services.IMegaMenuService;
 import app.services.MegaMenuService;
 import app.models.AuthModels.LoginRequest;
+import app.util.PageLoader;
+import app.util.PageSerializer;
+import app.util.VersionRestorer;
 
 class ServerApp extends ServerBootstrap {
 	override public function configureServices(services:ServiceCollection):Void {
 		services.addService(ServiceType.Scoped, IAuthService, AuthService);
 		services.addService(ServiceType.Scoped, ICmsService, CmsService);
 		services.addService(ServiceType.Scoped, IMegaMenuService, MegaMenuService);
+		services.addService(ServiceType.Scoped, PageLoader, PageLoader);
+		services.addService(ServiceType.Scoped, PageSerializer, PageSerializer);
+		services.addService(ServiceType.Scoped, VersionRestorer, VersionRestorer);
 	}
 
 	override public function configureMiddleware():Void {

@@ -8,17 +8,21 @@ import app.util.VersionRestorer;
 import app.util.JsonValidator;
 import app.util.ComponentSchema;
 import haxe.Json;
+import sidewinder.IDatabaseService;
+import sidewinder.DI;
 
 class CmsService implements ICmsService {
+	private var db:IDatabaseService;
 	private var loader:PageLoader;
 	private var serializer:PageSerializer;
 	private var restorer:VersionRestorer;
 	private var validator:JsonValidator;
 
-	public function new() {
-		this.loader = new PageLoader();
-		this.serializer = new PageSerializer();
-		this.restorer = new VersionRestorer();
+	public function new(?db:IDatabaseService, ?loader:PageLoader, ?serializer:PageSerializer, ?restorer:VersionRestorer) {
+		this.db = db != null ? db : DI.get(IDatabaseService);
+		this.loader = loader != null ? loader : DI.get(PageLoader);
+		this.serializer = serializer != null ? serializer : DI.get(PageSerializer);
+		this.restorer = restorer != null ? restorer : DI.get(VersionRestorer);
 		this.validator = new JsonValidator();
 	}
 
@@ -37,19 +41,20 @@ class CmsService implements ICmsService {
 				return {success: false, error: "Invalid slug format"};
 			}
 			// Check for duplicate slug
-			var conn = sidewinder.Database.acquire();
+			// Check for duplicate slug
+			var conn = db.acquire();
 			try {
 				var params = new Map<String, Dynamic>();
 				params.set("slug", request.slug);
 				var sql = "SELECT id FROM pages WHERE slug = @slug";
-				var rs = conn.request(sidewinder.Database.buildSql(sql, params));
+				var rs = conn.request(db.buildSql(sql, params));
 				if (rs.hasNext()) {
-					sidewinder.Database.release(conn);
+					db.release(conn);
 					return {success: false, error: "Duplicate slug"};
 				}
-				sidewinder.Database.release(conn);
+				db.release(conn);
 			} catch (e:Dynamic) {
-				sidewinder.Database.release(conn);
+				db.release(conn);
 				return {success: false, error: "Error checking slug: " + Std.string(e)};
 			}
 

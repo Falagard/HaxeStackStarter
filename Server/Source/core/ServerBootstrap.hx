@@ -7,7 +7,9 @@ import sidewinder.DI;
 import sidewinder.HybridLogger;
 import sidewinder.InMemoryCacheService;
 import sidewinder.ICacheService;
-import sidewinder.Database;
+// import sidewinder.Database;
+import sidewinder.IDatabaseService;
+import sidewinder.SqliteDatabaseService;
 import lime.app.Application;
 import lime.ui.WindowAttributes;
 import lime.ui.Window;
@@ -36,7 +38,7 @@ class ServerBootstrap extends Application {
 
 	public function init():Void {
 		// Initialize database
-		Database.runMigrations();
+		// Database.runMigrations(); - Moved to DI
 		HybridLogger.init();
 
 		// Configure SideWinderRequestHandler
@@ -50,10 +52,15 @@ class ServerBootstrap extends Application {
 		// DI Initialization
 		DI.init(c -> {
 			c.addService(ServiceType.Singleton, ICacheService, InMemoryCacheService);
+			c.addService(ServiceType.Singleton, IDatabaseService, SqliteDatabaseService);
 			configureServices(c);
 		});
 
 		cache = DI.get(ICacheService);
+
+		// Run migrations
+		var db = DI.get(IDatabaseService);
+		db.runMigrations();
 
 		// Configure generic middleware/routes
 		configureMiddleware();

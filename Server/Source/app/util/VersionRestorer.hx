@@ -3,14 +3,15 @@ package app.util;
 import app.models.CmsModels;
 import app.util.PageLoader;
 import app.util.PageSerializer;
+import hx.injection.Service;
 
-class VersionRestorer {
+class VersionRestorer implements Service {
 	private var loader:PageLoader;
 	private var serializer:PageSerializer;
 
-	public function new() {
-		this.loader = new PageLoader();
-		this.serializer = new PageSerializer();
+	public function new(loader:PageLoader, serializer:PageSerializer) {
+		this.loader = loader;
+		this.serializer = serializer;
 	}
 
 	/**
