@@ -52,45 +52,6 @@ class ServerApp extends ServerBootstrap {
 	}
 
 	override public function configureRoutes(router:Router):Void {
-		// Build AutoRouter mappings
-		AutoRouter.build(router, IAuthService, () -> DI.get(IAuthService), cache);
-		AutoRouter.build(router, ICmsService, () -> DI.get(ICmsService), cache);
-		AutoRouter.build(router, IMegaMenuService, () -> DI.get(IMegaMenuService), cache);
-
-		// SEO HTML for bots
-		router.add("GET", "/seo/:slug", (req, res) -> {
-			var slug = req.params.get("slug");
-			var cms:ICmsService = cast DI.get(ICmsService);
-			var pageResp = cms.getPageBySlug(slug, true);
-			if (!pageResp.success || pageResp.page == null) {
-				res.sendResponse(HTTPStatus.NOT_FOUND);
-				res.endHeaders();
-				res.write("Page not found");
-				res.end();
-				return;
-			}
-			var page = pageResp.page;
-
-			// Serve SEO HTML for bots (or debugging)
-			var html = '<!DOCTYPE html>';
-			html += '<html lang="en">';
-			html += '<head>';
-			html += '<meta charset="UTF-8">';
-			html += '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-			html += '<title>' + page.title + '</title>';
-			html += '<meta name="description" content="' + page.title + '" />';
-			html += '<meta name="robots" content="index, follow" />';
-			html += '</head>';
-			html += '<body>';
-			html += page.seoHtml;
-			html += '</body></html>';
-			res.sendResponse(HTTPStatus.OK);
-			res.setHeader("Content-Type", "text/html; charset=UTF-8");
-			res.endHeaders();
-			res.write(html);
-			res.end();
-		});
-
 		// Custom login endpoint to set HttpOnly cookie
 		router.add("POST", "/api/auth/login", (req, res) -> {
 			try {
@@ -170,6 +131,75 @@ class ServerApp extends ServerBootstrap {
 				res.write(Json.stringify({error: "Internal server error"}));
 				res.end();
 			}
+		});
+
+		// Custom current user endpoint using request context
+		router.add("GET", "/api/auth/me", (req, res) -> {
+			try {
+				// Prevent caching of auth status
+				res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+				res.setHeader("Pragma", "no-cache");
+				res.setHeader("Expires", "0");
+
+				// User is populated by AuthenticationMiddleware (serialized in params)
+				var userJson = req.params.get("auth_user_json");
+
+				res.sendResponse(HTTPStatus.OK);
+				res.setHeader("Content-Type", "application/json");
+				res.endHeaders();
+
+				if (userJson != null) {
+					res.write(userJson);
+				} else {
+					// Return null/empty for no user
+					res.write("null");
+				}
+				res.end();
+			} catch (e:Dynamic) {
+				res.sendResponse(HTTPStatus.INTERNAL_SERVER_ERROR);
+				res.setHeader("Content-Type", "application/json");
+				res.endHeaders();
+				res.write(Json.stringify({error: "Internal server error"}));
+				res.end();
+			}
+		});
+		// Build AutoRouter mappings
+		AutoRouter.build(router, IAuthService, () -> DI.get(IAuthService), cache);
+		AutoRouter.build(router, ICmsService, () -> DI.get(ICmsService), cache);
+		AutoRouter.build(router, IMegaMenuService, () -> DI.get(IMegaMenuService), cache);
+
+		// SEO HTML for bots
+		router.add("GET", "/seo/:slug", (req, res) -> {
+			var slug = req.params.get("slug");
+			var cms:ICmsService = cast DI.get(ICmsService);
+			var pageResp = cms.getPageBySlug(slug, true);
+			if (!pageResp.success || pageResp.page == null) {
+				res.sendResponse(HTTPStatus.NOT_FOUND);
+				res.endHeaders();
+				res.write("Page not found");
+				res.end();
+				return;
+			}
+			var page = pageResp.page;
+
+			// Serve SEO HTML for bots (or debugging)
+			var html = '<!DOCTYPE html>';
+			html += '<html lang="en">';
+			html += '<head>';
+			html += '<meta charset="UTF-8">';
+			html += '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+			html += '<title>' + page.title + '</title>';
+			html += '<meta name="description" content="' + page.title + '" />';
+			html += '<meta name="robots" content="index, follow" />';
+			html += '</head>';
+			html += '<body>';
+			html += page.seoHtml;
+			html += '</body></html>';
+			res.sendResponse(HTTPStatus.OK);
+			res.setHeader("Content-Type", "text/html; charset=UTF-8");
+			res.endHeaders();
+			res.write(html);
+			res.end();
 		});
 	}
 }

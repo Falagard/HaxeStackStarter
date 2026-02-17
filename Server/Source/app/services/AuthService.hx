@@ -213,16 +213,17 @@ class AuthService implements IAuthService {
 			params.set("token", token);
 			params.set("now", Date.now().getTime());
 
-			var sql = "SELECT u.* FROM users u "
+			var sql = "SELECT u.*, s.expires_at FROM users u "
 				+ "INNER JOIN sessions s ON s.user_id = u.id "
 				+ "WHERE s.token=@token AND s.expires_at > @now AND u.is_active=1";
 			var rs = conn.request(db.buildSql(sql, params));
-			var rec = rs.next();
-			db.release(conn);
 
-			if (rec != null) {
+			if (rs.hasNext()) {
+				var rec = rs.next();
+				db.release(conn);
 				return recordToUser(rec);
 			}
+			db.release(conn);
 		} catch (e:Dynamic) {}
 
 		return null;
