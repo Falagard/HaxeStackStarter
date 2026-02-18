@@ -36,11 +36,10 @@ class CmsService implements ICmsService {
 			}
 
 			// Validate slug format (only allow a-z, 0-9, dash, underscore, min 3 chars)
-			var slugRegex = ~/^[a-z0-9_-]{3,}$/i;
+			var slugRegex = ~/^[a-z0-9_\/-]{3,}$/i;
 			if (!slugRegex.match(request.slug)) {
 				return {success: false, error: "Invalid slug format"};
 			}
-			// Check for duplicate slug
 			// Check for duplicate slug
 			var conn = db.acquire();
 			try {
@@ -52,15 +51,16 @@ class CmsService implements ICmsService {
 					db.release(conn);
 					return {success: false, error: "Duplicate slug"};
 				}
+
+				var layout = request.layout != null ? request.layout : "default";
+				var pageId = serializer.createPage(request.slug, request.title, layout, request.seoHtml, conn);
+
 				db.release(conn);
+				return {success: true, pageId: pageId};
 			} catch (e:Dynamic) {
 				db.release(conn);
-				return {success: false, error: "Error checking slug: " + Std.string(e)};
+				return {success: false, error: "Error checking or creating slug: " + Std.string(e)};
 			}
-
-			var layout = request.layout != null ? request.layout : "default";
-			var pageId = serializer.createPage(request.slug, request.title, layout, request.seoHtml);
-			return {success: true, pageId: pageId};
 		} catch (e:Dynamic) {
 			return {success: false, error: 'Error creating page: $e'};
 		}

@@ -14,62 +14,82 @@ class PageLoader implements Service {
 		this.db = db != null ? db : DI.get(IDatabaseService);
 	}
 
-	public function loadLatest(pageId:Int):PageVersionDTO {
-		var conn = db.acquire();
+	public function loadLatest(pageId:Int, ?conn:sys.db.Connection):PageVersionDTO {
+		var ownConn = false;
+		if (conn == null) {
+			conn = db.acquire();
+			ownConn = true;
+		}
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("pageId", pageId);
 			var sql = "SELECT latest_version_id FROM pages WHERE id = @pageId";
 			var rs = conn.request(db.buildSql(sql, params));
 			if (!rs.hasNext()) {
-				db.release(conn);
+				if (ownConn)
+					db.release(conn);
 				throw 'Page not found: $pageId';
 			}
 			var rec = rs.next();
 			var versionIdField = Reflect.field(rec, "latest_version_id");
 			var versionId = versionIdField != null ? Std.int(versionIdField) : 0;
 			if (versionId == 0) {
-				db.release(conn);
+				if (ownConn)
+					db.release(conn);
 				throw 'Page has no latest version: $pageId';
 			}
-			var result = loadVersion(versionId);
-			db.release(conn);
+			var result = loadVersion(versionId, conn);
+			if (ownConn)
+				db.release(conn);
 			return result;
 		} catch (e:Dynamic) {
-			db.release(conn);
+			if (ownConn)
+				db.release(conn);
 			throw e;
 		}
 	}
 
-	public function loadPublished(pageId:Int):PageVersionDTO {
-		var conn = db.acquire();
+	public function loadPublished(pageId:Int, ?conn:sys.db.Connection):PageVersionDTO {
+		var ownConn = false;
+		if (conn == null) {
+			conn = db.acquire();
+			ownConn = true;
+		}
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("pageId", pageId);
 			var sql = "SELECT published_version_id FROM pages WHERE id = @pageId";
 			var rs = conn.request(db.buildSql(sql, params));
 			if (!rs.hasNext()) {
-				db.release(conn);
+				if (ownConn)
+					db.release(conn);
 				throw 'Page not found: $pageId';
 			}
 			var rec = rs.next();
 			var versionIdField = Reflect.field(rec, "published_version_id");
 			var versionId = versionIdField != null ? Std.int(versionIdField) : 0;
 			if (versionId == 0) {
-				db.release(conn);
+				if (ownConn)
+					db.release(conn);
 				throw 'Page has no published version: $pageId';
 			}
-			var result = loadVersion(versionId);
-			db.release(conn);
+			var result = loadVersion(versionId, conn);
+			if (ownConn)
+				db.release(conn);
 			return result;
 		} catch (e:Dynamic) {
-			db.release(conn);
+			if (ownConn)
+				db.release(conn);
 			throw e;
 		}
 	}
 
-	public function loadBySlug(slug:String, published:Bool = true):PageVersionDTO {
-		var conn = db.acquire();
+	public function loadBySlug(slug:String, published:Bool = true, ?conn:sys.db.Connection):PageVersionDTO {
+		var ownConn = false;
+		if (conn == null) {
+			conn = db.acquire();
+			ownConn = true;
+		}
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("slug", slug);
@@ -77,37 +97,46 @@ class PageLoader implements Service {
 			var sql = 'SELECT id, $column FROM pages WHERE slug = @slug';
 			var rs = conn.request(db.buildSql(sql, params));
 			if (!rs.hasNext()) {
-				db.release(conn);
+				if (ownConn)
+					db.release(conn);
 				throw 'Page not found: $slug';
 			}
 			var rec = rs.next();
 			var versionIdField = Reflect.field(rec, column);
 			var versionId = versionIdField != null ? Std.int(versionIdField) : 0;
 			if (versionId == 0) {
-				db.release(conn);
+				if (ownConn)
+					db.release(conn);
 				throw 'Page has no ${published ? "published" : "latest"} version: $slug';
 			}
-			var result = loadVersion(versionId);
-			db.release(conn);
+			var result = loadVersion(versionId, conn);
+			if (ownConn)
+				db.release(conn);
 			return result;
 		} catch (e:Dynamic) {
-			db.release(conn);
+			if (ownConn)
+				db.release(conn);
 			throw e;
 		}
 	}
 
-	public function loadVersion(versionId:Int):PageVersionDTO {
+	public function loadVersion(versionId:Int, ?conn:sys.db.Connection):PageVersionDTO {
 		if (versionId == 0) {
 			throw 'Invalid version ID: 0';
 		}
-		var conn = db.acquire();
+		var ownConn = false;
+		if (conn == null) {
+			conn = db.acquire();
+			ownConn = true;
+		}
 		try {
 			var params = new Map<String, Dynamic>();
 			params.set("versionId", versionId);
-			var sql = "SELECT id, page_id, version_num, title, layout, slug, created_at, created_by, seo_html, visibilityConfig FROM page_versions WHERE id = @versionId";
+			var sql = "SELECT id, page_id, version_num, title, layout, slug, created_at, created_by, seo_html, visibility_config FROM page_versions WHERE id = @versionId";
 			var rs = conn.request(db.buildSql(sql, params));
 			if (!rs.hasNext()) {
-				db.release(conn);
+				if (ownConn)
+					db.release(conn);
 				throw 'Version not found: $versionId';
 			}
 			var v = rs.next();
@@ -122,7 +151,7 @@ class PageLoader implements Service {
 				createdBy: Std.string(Reflect.field(v, "created_by")),
 				components: [],
 				seoHtml: Std.string(Reflect.field(v, "seo_html")),
-				visibilityConfig: v.visibilityConfig != null ? haxe.Json.parse(Std.string(Reflect.field(v, "visibilityConfig"))) : {
+				visibilityConfig: Reflect.field(v, "visibility_config") != null ? haxe.Json.parse(Std.string(Reflect.field(v, "visibility_config"))) : {
 					visibilityMode: "Public",
 					groupIds: []
 				}
@@ -130,7 +159,7 @@ class PageLoader implements Service {
 
 			params = new Map<String, Dynamic>();
 			params.set("versionId", versionId);
-			sql = "SELECT id, sort_order, type, data_json, visibilityConfig FROM page_components WHERE page_version_id = @versionId ORDER BY sort_order ASC";
+			sql = "SELECT id, sort_order, type, data_json, visibility_config FROM page_components WHERE page_version_id = @versionId ORDER BY sort_order ASC";
 			var rs2 = conn.request(db.buildSql(sql, params));
 			while (rs2.hasNext()) {
 				var c = rs2.next();
@@ -139,17 +168,19 @@ class PageLoader implements Service {
 					sort: Std.int(Reflect.field(c, "sort_order")),
 					type: Std.string(Reflect.field(c, "type")),
 					data: Json.parse(Std.string(Reflect.field(c, "data_json"))),
-					visibilityConfig: c.visibilityConfig != null ? haxe.Json.parse(Std.string(Reflect.field(c, "visibilityConfig"))) : {
+					visibilityConfig: Reflect.field(c, "visibility_config") != null ? haxe.Json.parse(Std.string(Reflect.field(c, "visibility_config"))) : {
 						visibilityMode: "Public",
 						groupIds: []
 					}
 				});
 			}
 
-			db.release(conn);
+			if (ownConn)
+				db.release(conn);
 			return dto;
 		} catch (e:Dynamic) {
-			db.release(conn);
+			if (ownConn)
+				db.release(conn);
 			throw e;
 		}
 	}

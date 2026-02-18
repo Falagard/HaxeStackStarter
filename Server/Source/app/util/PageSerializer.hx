@@ -40,7 +40,7 @@ class PageSerializer implements Service {
 			params.set("slug", slug);
 			if (visibilityConfig != null) {
 				params.set("visibilityConfig", haxe.Json.stringify(visibilityConfig));
-				sql = "UPDATE pages SET title = @title, slug = @slug, visibilityConfig = @visibilityConfig WHERE id = @pageId";
+				sql = "UPDATE pages SET title = @title, slug = @slug, visibility_config = @visibilityConfig WHERE id = @pageId";
 			} else {
 				sql = "UPDATE pages SET title = @title, slug = @slug WHERE id = @pageId";
 			}
@@ -53,8 +53,12 @@ class PageSerializer implements Service {
 		}
 	}
 
-	public function savePageVersion(page:PageDTO, ?userId:String, ?seoHtml:String):Int {
-		var conn = db.acquire();
+	public function savePageVersion(page:PageDTO, ?userId:String, ?seoHtml:String, ?conn:sys.db.Connection):Int {
+		var ownConn = false;
+		if (conn == null) {
+			conn = db.acquire();
+			ownConn = true;
+		}
 		try {
 			// Get next version number
 			var params = new Map<String, Dynamic>();
@@ -78,7 +82,7 @@ class PageSerializer implements Service {
 			params.set("seoHtml", seoHtml);
 			params.set("visibilityConfig",
 				haxe.Json.stringify(page.visibilityConfig != null ? page.visibilityConfig : {visibilityMode: "Public", groupIds: []}));
-			sql = "INSERT INTO page_versions (page_id, version_num, title, layout, slug, created_by, seo_html, visibilityConfig) VALUES (@pageId, @versionNum, @title, @layout, @slug, @createdBy, @seoHtml, @visibilityConfig)";
+			sql = "INSERT INTO page_versions (page_id, version_num, title, layout, slug, created_by, seo_html, visibility_config) VALUES (@pageId, @versionNum, @title, @layout, @slug, @createdBy, @seoHtml, @visibilityConfig)";
 			conn.request(db.buildSql(sql, params));
 			var versionId = conn.lastInsertId();
 
@@ -91,7 +95,7 @@ class PageSerializer implements Service {
 				params.set("type", comp.type);
 				params.set("dataJson", jsonData);
 				params.set("visibilityConfig", haxe.Json.stringify(comp.visibilityConfig));
-				sql = "INSERT INTO page_components (page_version_id, sort_order, type, data_json, visibilityConfig) VALUES (@versionId, @sortOrder, @type, @dataJson, @visibilityConfig)";
+				sql = "INSERT INTO page_components (page_version_id, sort_order, type, data_json, visibility_config) VALUES (@versionId, @sortOrder, @type, @dataJson, @visibilityConfig)";
 				conn.request(db.buildSql(sql, params));
 			}
 
@@ -103,15 +107,17 @@ class PageSerializer implements Service {
 			sql = "UPDATE pages SET latest_version_id = @versionId, title = @title WHERE id = @pageId";
 			conn.request(db.buildSql(sql, params));
 
-			db.release(conn);
+			if (ownConn)
+				db.release(conn);
 			return versionId;
 		} catch (e:Dynamic) {
-			db.release(conn);
+			if (ownConn)
+				db.release(conn);
 			throw e;
 		}
 	}
 
-	public function createPage(slug:String, title:String, layout:String = "default", ?seoHtml:String):Int {
+	public function createPage(slug:String, title:String, layout:String = "default", ?seoHtml:String, ?conn:sys.db.Connection):Int {
 		var conn = db.acquire();
 		try {
 			var params = new Map<String, Dynamic>();
@@ -130,7 +136,15 @@ class PageSerializer implements Service {
 				components: [],
 				visibilityConfig: {visibilityMode: "Public", groupIds: []}
 			};
-			savePageVersion(page, null, seoHtml);
+			var versionId = savePageVersion(page, null, seoHtml, conn);
+
+			// Update Page latest_version_id, published_version_id and title
+			params = new Map<String, Dynamic>();
+			params.set("versionId", versionId);
+			params.set("pageId", pageId);
+			params.set("title", title);
+			sql = "UPDATE pages SET latest_version_id = @versionId, published_version_id = @versionId, title = @title WHERE id = @pageId";
+			conn.request(db.buildSql(sql, params));
 
 			db.release(conn);
 			return pageId;

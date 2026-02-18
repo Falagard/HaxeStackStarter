@@ -163,6 +163,27 @@ class ServerApp extends ServerBootstrap {
 				res.end();
 			}
 		});
+		// Manual route handler for slug-based page lookup
+		// The AutoRouter macro doesn't correctly pass :*slug catch-all params on HL target,
+		// so we register this route manually BEFORE AutoRouter to ensure first-match wins.
+		router.add("GET", "/pub/cms/page/slug/:*slug", (req, res) -> {
+			var slug = req.params.get("slug");
+			var cms:ICmsService = cast DI.get(ICmsService);
+			var published = true;
+			var publishedStr = req.query.get("published");
+			if (publishedStr != null) {
+				published = (publishedStr == "true" || publishedStr == "1");
+			}
+			var result = cms.getPageBySlug(slug, published);
+			var json = haxe.Json.stringify(result);
+			res.sendResponse(HTTPStatus.OK);
+			res.setHeader("Content-Type", "application/json");
+			res.setHeader("Content-Length", Std.string(json.length));
+			res.endHeaders();
+			res.write(json);
+			res.end();
+		});
+
 		// Build AutoRouter mappings
 		AutoRouter.build(router, IAuthService, () -> DI.get(IAuthService), cache);
 		AutoRouter.build(router, ICmsService, () -> DI.get(ICmsService), cache);

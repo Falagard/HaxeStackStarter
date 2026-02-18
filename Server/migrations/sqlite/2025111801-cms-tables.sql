@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS page_versions (
     layout TEXT,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     created_by TEXT,
+    visibility_config TEXT DEFAULT '{"visibilityMode":"Public","groupIds":[]}',
     UNIQUE(page_id, version_num),
     FOREIGN KEY (page_id) REFERENCES pages(id) ON DELETE CASCADE
 );
@@ -27,6 +28,7 @@ CREATE TABLE IF NOT EXISTS page_components (
     sort_order INTEGER NOT NULL,
     type TEXT NOT NULL,
     data_json TEXT,
+    visibility_config TEXT DEFAULT '{"visibilityMode":"Public","groupIds":[]}',
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (page_version_id) REFERENCES page_versions(id) ON DELETE CASCADE
 );

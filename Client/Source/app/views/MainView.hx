@@ -18,7 +18,7 @@ import app.views.auth.AuthManager;
 
 @:build(haxe.ui.ComponentBuilder.build("Assets/main-view.xml"))
 class MainView extends VBox {
-	var megaMenuView:MegaMenuView;
+	// var megaMenuView:MegaMenuView;
 	var megaMenuAdminDialog:MegaMenuAdminDialog;
 	var userLabel:Label; // from XML - displays current user
 	var logoutBtn:Button; // from XML - logout button
@@ -69,9 +69,10 @@ class MainView extends VBox {
 		}
 
 		// --- MegaMenu Integration ---
-		// TODO: Replace null with actual IMegaMenuService instance
-		megaMenuView = new MegaMenuView();
-		this.addComponent(megaMenuView);
+		var menuComponent = new app.components.MegaMenuComponent();
+		this.addComponent(menuComponent);
+		// Load all menus
+		menuComponent.loadAllMenus();
 		// To show admin dialog, call megaMenuAdminDialog.showDialog() as needed
 		// megaMenuAdminDialog = new MegaMenuAdminDialog(menuService);
 	}
@@ -79,17 +80,36 @@ class MainView extends VBox {
 	/** Render the active page using PageNavigator */
 	private function renderActivePage():Void {
 		contentPlaceholder.removeAllComponents();
-		var pageIdInt = Std.parseInt(pageNavigator.currentPage);
-		cmsManager.getPage(pageIdInt, function(response:GetPageResponse) {
-			if (response.success && response.page != null) {
-				var rendered = pageRenderer.renderPage(response.page, pageNavigator.currentAnchor);
-				contentPlaceholder.addComponent(rendered);
-			} else {
-				var errorLabel = new haxe.ui.components.Label();
-				errorLabel.text = "Failed to load page.";
-				contentPlaceholder.addComponent(errorLabel);
-			}
-		});
+		var currentPageId = pageNavigator.currentPage;
+		var firstChar = currentPageId.charAt(0);
+		var isNumeric = (firstChar >= "0" && firstChar <= "9");
+		if (isNumeric) {
+			var pageIdInt = Std.parseInt(currentPageId);
+			cmsManager.getPage(pageIdInt, function(response:GetPageResponse) {
+				if (response.success && response.page != null) {
+					var rendered = pageRenderer.renderPage(response.page, pageNavigator.currentAnchor);
+					contentPlaceholder.addComponent(rendered);
+				} else {
+					var errorLabel = new haxe.ui.components.Label();
+					errorLabel.text = "Failed to load page.";
+					contentPlaceholder.addComponent(errorLabel);
+				}
+			});
+		} else {
+			var slug = currentPageId;
+			if (slug.charAt(0) == "/")
+				slug = slug.substr(1);
+			cmsManager.getPageBySlug(slug, true, function(response:GetPageResponse) {
+				if (response.success && response.page != null) {
+					var rendered = pageRenderer.renderPage(response.page, pageNavigator.currentAnchor);
+					contentPlaceholder.addComponent(rendered);
+				} else {
+					var errorLabel = new haxe.ui.components.Label();
+					errorLabel.text = "Failed to load page.";
+					contentPlaceholder.addComponent(errorLabel);
+				}
+			});
+		}
 	}
 
 	private function updateUserDisplay():Void {

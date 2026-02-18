@@ -1,0 +1,118 @@
+[CivetWebNative] Mutexes initialized
+[CivetWebNative] Creating server handle (Build: Feb 13 2026 06:46:58)
+[CivetWebNative] Handled request 1: GET /pub/cms/page/slug/company/about
+[CivetWebNative] Request 1 body length: 0
+[CivetWebNative] Polling request ID 1
+sidewinder/WebServerFactory.hx:47: [WebServerFactory] Route matched: /pub/cms/page/slug/company/about
+sidewinder/WebServerFactory.hx:48: [WebServerFactory] Match params: [slug => company/about]
+sidewinder/WebServerFactory.hx:49: [WebServerFactory] req.params after assign: [slug => company/about]
+sidewinder/WebServerFactory.hx:51: [WebServerFactory] req.params.exists("slug"): true
+sidewinder/WebServerFactory.hx:52: [WebServerFactory] req.params.get("slug"): company/about
+Source/app/services/CmsService.hx:120: getPageBySlug called with slug="null" published=true
+[CivetWebNative] Pushing response for ID 1 (len 68)
+[CivetWebNative] Response for ID 1 enqueued
+[CivetWebNative] Handled request 2: GET /
+[CivetWebNative] Request 2 body length: 0
+[CivetWebNative] Polling request ID 2
+[CivetWebNative] Pushing response for ID 2 (len 0)
+[CivetWebNative] Response for ID 2 enqueued
+[CivetWebNative] Handled request 3: GET /
+[CivetWebNative] Request 3 body length: 0
+[CivetWebNative] Polling request ID 3
+[CivetWebNative] Pushing response for ID 3 (len 0)
+[CivetWebNative] Response for ID 3 enqueued
+[CivetWebNative] Handled request 4: GET /feed/
+[CivetWebNative] Request 4 body length: 0
+[CivetWebNative] Polling request ID 4
+[CivetWebNative] Pushing response for ID 4 (len 0)
+[CivetWebNative] Response for ID 4 enqueued
+[CivetWebNative] Handled request 5: GET /xmlrpc.php
+[CivetWebNative] Request 5 body length: 0
+[CivetWebNative] Polling request ID 5
+[CivetWebNative] Pushing response for ID 5 (len 0)
+[CivetWebNative] Response for ID 5 enqueued
+[CivetWebNative] Handled request 6: GET /
+[CivetWebNative] Request 6 body length: 0
+[CivetWebNative] Polling request ID 6
+[CivetWebNative] Pushing response for ID 6 (len 0)
+[CivetWebNative] Response for ID 6 enqueued
+[CivetWebNative] Handled request 7: GET /
+[CivetWebNative] Request 7 body length: 0
+[CivetWebNative] Polling request ID 7
+[CivetWebNative] Pushing response for ID 7 (len 0)
+[CivetWebNative] Response for ID 7 enqueued
+[CivetWebNative] Handled request 8: GET /
+[CivetWebNative] Request 8 body length: 0
+[CivetWebNative] Polling request ID 8
+[CivetWebNative] Pushing response for ID 8 (len 0)
+[CivetWebNative] Response for ID 8 enqueued
+[CivetWebNative] Handled request 9: GET /.git/config
+[CivetWebNative] Request 9 body length: 0
+[CivetWebNative] Polling request ID 9
+[CivetWebNative] Pushing response for ID 9 (len 0)
+[CivetWebNative] Response for ID 9 enqueued
+[CivetWebNative] Handled request 10: GET /.git/config
+[CivetWebNative] Request 10 body length: 0
+[CivetWebNative] Polling request ID 10
+[CivetWebNative] Pushing response for ID 10 (len 0)
+[CivetWebNative] Response for ID 10 enqueued
+[CivetWebNative] Handled request 11: POST /xmlrpc.php
+[CivetWebNative] Request 11 body length: 680
+[CivetWebNative] Polling request ID 11
+[CivetWebNative] Pushing response for ID 11 (len 0)
+[CivetWebNative] Response for ID 11 enqueued
+[CivetWebNative] Handled request 12: GET /
+[CivetWebNative] Request 12 body length: 0
+[CivetWebNative] Polling request ID 12
+[CivetWebNative] Pushing response for ID 12 (len 0)
+[CivetWebNative] Response for ID 12 enqueued
+[CivetWebNative] Handled request 13: GET /wp-admin/setup-config.php
+[CivetWebNative] Request 13 body length: 0
+[CivetWebNative] Polling request ID 13
+[CivetWebNative] Pushing response for ID 13 (len 0)
+[CivetWebNative] Response for ID 13 enqueued
+[CivetWebNative] Handled request 14: GET /wordpress/wp-admin/setup-config.php
+[CivetWebNative] Request 14 body length: 0
+[CivetWebNative] Polling request ID 14
+[CivetWebNative] Pushing response for ID 14 (len 0)
+[CivetWebNative] Response for ID 14 enqueued
+[CivetWebNative] Handled request 15: GET /wp-admin/setup-config.php
+[CivetWebNative] Request 15 body length: 0
+[CivetWebNative] Polling request ID 15
+[CivetWebNative] Pushing response for ID 15 (len 0)
+[CivetWebNative] Response for ID 15 enqueued
+[CivetWebNative] Handled request 16: GET /wordpress/wp-admin/setup-config.php
+[CivetWebNative] Request 16 body length: 0
+[CivetWebNative] Polling request ID 16
+[CivetWebNative] Pushing response for ID 16 (len 0)
+[CivetWebNative] Response for ID 16 enqueued
+[CivetWebNative] Handled request 17: GET /
+[CivetWebNative] Request 17 body length: 0
+[CivetWebNative] Polling request ID 17
+[CivetWebNative] Pushing response for ID 17 (len 0)
+[CivetWebNative] Response for ID 17 enqueued
+[CivetWebNative] Handled request 18: GET /
+[CivetWebNative] Request 18 body length: 0
+[CivetWebNative] Polling request ID 18
+[CivetWebNative] Pushing response for ID 18 (len 0)
+[CivetWebNative] Response for ID 18 enqueued
+[CivetWebNative] Handled request 19: GET /.git/config
+[CivetWebNative] Request 19 body length: 0
+[CivetWebNative] Polling request ID 19
+[CivetWebNative] Pushing response for ID 19 (len 0)
+[CivetWebNative] Response for ID 19 enqueued
+[CivetWebNative] Handled request 20: GET /
+[CivetWebNative] Request 20 body length: 0
+[CivetWebNative] Polling request ID 20
+[CivetWebNative] Pushing response for ID 20 (len 0)
+[CivetWebNative] Response for ID 20 enqueued
+[CivetWebNative] Handled request 21: GET /
+[CivetWebNative] Request 21 body length: 0
+[CivetWebNative] Polling request ID 21
+[CivetWebNative] Pushing response for ID 21 (len 0)
+[CivetWebNative] Response for ID 21 enqueued
+[CivetWebNative] Handled request 22: GET /
+[CivetWebNative] Request 22 body length: 0
+[CivetWebNative] Polling request ID 22
+[CivetWebNative] Pushing response for ID 22 (len 0)
+[CivetWebNative] Response for ID 22 enqueued

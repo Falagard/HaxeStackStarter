@@ -67,20 +67,34 @@ class PageNavigator {
 		currentAnchor = anchor;
 		appState.currentPage = pageId;
 		appState.currentAnchor = anchor;
-		// Fetch page info asynchronously and trigger rendering
-		cmsManager.getPage(Std.parseInt(pageId), function(response:GetPageResponse) {
-			if (response.success && response.page != null) {
-				// Renderer is handled by MainView observing PageNavigator events,
-				// or we should consolidate it here. But removing it prevents double-render
-				// if MainView is also doing it.
-				// renderer.renderPage(response.page, anchor);
-
-				// Fire onNavigate hooks
-				for (hook in onNavigate) {
-					hook();
+		// Determine if the pageId is numeric or a slug path
+		// Note: use charAt check instead of Std.parseInt because on JS target,
+		// Std.parseInt returns NaN (not null) for non-numeric strings
+		var firstChar = pageId.charAt(0);
+		var isNumeric = (firstChar >= "0" && firstChar <= "9");
+		if (isNumeric) {
+			// Numeric page ID — fetch by ID
+			var numericId = Std.parseInt(pageId);
+			cmsManager.getPage(numericId != null ? numericId : 0, function(response:GetPageResponse) {
+				if (response.success && response.page != null) {
+					for (hook in onNavigate) {
+						hook();
+					}
 				}
-			}
-		});
+			});
+		} else {
+			// Slug-based path (e.g. "/company/about") — strip leading slash and fetch by slug
+			var slug = pageId;
+			if (slug.charAt(0) == "/")
+				slug = slug.substr(1);
+			cmsManager.getPageBySlug(slug, true, function(response:GetPageResponse) {
+				if (response.success && response.page != null) {
+					for (hook in onNavigate) {
+						hook();
+					}
+				}
+			});
+		}
 		// Update deep link (URL)
 		updateUrl(pageId, anchor);
 		return true;

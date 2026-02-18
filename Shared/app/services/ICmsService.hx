@@ -8,7 +8,7 @@ interface ICmsService extends Service {
 	@get("/pub/cms/page/:id")
 	function getPage(id:Int):GetPageResponse;
 
-	@get("/pub/cms/page/slug/:slug")
+	@get("/pub/cms/page/slug/:*slug")
 	function getPageBySlug(slug:String, ?published:Bool = true):GetPageResponse;
 
 	// Api - require auth

@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS menus (
     slug TEXT NOT NULL UNIQUE,
     icon TEXT,
     sort_order INTEGER DEFAULT 0,
-    enabled BOOLEAN DEFAULT 1
+    enabled BOOLEAN DEFAULT 1,
+    visibility_config TEXT DEFAULT '{"visibilityMode":"Public","groupIds":[]}'
 );
 
 CREATE TABLE IF NOT EXISTS menu_sections (
@@ -30,6 +31,7 @@ CREATE TABLE IF NOT EXISTS menu_items (
     custom_component TEXT,
     sort_order INTEGER DEFAULT 0,
     enabled BOOLEAN DEFAULT 1,
+    visibility_config TEXT DEFAULT '{"visibilityMode":"Public","groupIds":[]}',
     FOREIGN KEY (section_id) REFERENCES menu_sections(id) ON DELETE CASCADE
 );
 

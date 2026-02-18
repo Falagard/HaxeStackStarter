@@ -1,0 +1,5908 @@
+{
+	doc: null
+	fields: [{
+		access: [APublic]
+		doc: null
+		kind: FVar(TPath({
+			name: String
+			pack: []
+			params: []
+			sub: null
+		}), null)
+		meta: null
+		name: baseUrl
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FVar(TPath({
+			name: ICookieJar
+			pack: [sidewinder]
+			params: []
+			sub: null
+		}), null)
+		meta: null
+		name: cookieJar
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: baseUrl
+				opt: null
+				type: TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}, {
+				meta: null
+				name: cookieJar
+				opt: null
+				type: TPath({
+					name: ICookieJar
+					pack: [sidewinder]
+					params: []
+					sub: null
+				})
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EBinop(OpAssign, {
+						expr: EField({
+							expr: EConst(CIdent(this))
+							pos: #pos
+						}, baseUrl, Normal)
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(baseUrl))
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EField({
+							expr: EConst(CIdent(this))
+							pos: #pos
+						}, cookieJar, Normal)
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(cookieJar))
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: null
+		})
+		meta: null
+		name: new
+		pos: #pos
+	}, {
+		access: [APrivate]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: method
+				opt: null
+				type: TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}, {
+				meta: null
+				name: path
+				opt: null
+				type: TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}, {
+				meta: null
+				name: body
+				opt: null
+				type: TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}, {
+				meta: null
+				name: onData
+				opt: null
+				type: TFunction([TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onError
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: ECall({
+						expr: EConst(CIdent(trace))
+						pos: #pos
+					}, [{
+						expr: EBinop(OpAdd, {
+							expr: EBinop(OpAdd, {
+								expr: EBinop(OpAdd, {
+									expr: EConst(CString([AutoClientAsync] doRequestAsync begin method=, SingleQuotes))
+									pos: #pos
+								}, {
+									expr: EConst(CIdent(method))
+									pos: #pos
+								})
+								pos: #pos
+							}, {
+								expr: EConst(CString( path=, SingleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: EConst(CIdent(path))
+							pos: #pos
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}, {
+					expr: EVars([{
+						expr: {
+							expr: EBinop(OpAdd, {
+								expr: EConst(CIdent(baseUrl))
+								pos: #pos
+							}, {
+								expr: EConst(CIdent(path))
+								pos: #pos
+							})
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: full
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(trace))
+						pos: #pos
+					}, [{
+						expr: EBinop(OpAdd, {
+							expr: EConst(CString([AutoClientAsync] full URL=, SingleQuotes))
+							pos: #pos
+						}, {
+							expr: EConst(CIdent(full))
+							pos: #pos
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}, {
+					expr: EVars([{
+						expr: {
+							expr: ETernary({
+								expr: EParenthesis({
+									expr: EBinop(OpNotEq, {
+										expr: EConst(CIdent(body))
+										pos: #pos
+									}, {
+										expr: EConst(CIdent(null))
+										pos: #pos
+									})
+									pos: #pos
+								})
+								pos: #pos
+							}, {
+								expr: ECall({
+									expr: EField({
+										expr: EField({
+											expr: EConst(CIdent(haxe))
+											pos: #pos
+										}, Json, Normal)
+										pos: #pos
+									}, stringify, Normal)
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(body))
+									pos: #pos
+								}])
+								pos: #pos
+							}, {
+								expr: EConst(CIdent(null))
+								pos: #pos
+							})
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: jsonBody
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EIf({
+						expr: EBinop(OpNotEq, {
+							expr: EConst(CIdent(jsonBody))
+							pos: #pos
+						}, {
+							expr: EConst(CIdent(null))
+							pos: #pos
+						})
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EConst(CIdent(trace))
+							pos: #pos
+						}, [{
+							expr: EBinop(OpAdd, {
+								expr: EConst(CString([AutoClientAsync] jsonBody=, SingleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CIdent(jsonBody))
+								pos: #pos
+							})
+							pos: #pos
+						}])
+						pos: #pos
+					}, null)
+					pos: #pos
+				}, {
+					expr: EVars([{
+						expr: {
+							expr: ENew({
+								name: Http
+								pack: [haxe]
+								params: []
+								sub: null
+							}, [{
+								expr: EConst(CIdent(full))
+								pos: #pos
+							}])
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: h
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EField({
+							expr: EConst(CIdent(h))
+							pos: #pos
+						}, setHeader, Normal)
+						pos: #pos
+					}, [{
+						expr: EConst(CString(Accept, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CString(application/json, DoubleQuotes))
+						pos: #pos
+					}])
+					pos: #pos
+				}, {
+					expr: EIf({
+						expr: EBinop(OpNotEq, {
+							expr: EConst(CIdent(jsonBody))
+							pos: #pos
+						}, {
+							expr: EConst(CIdent(null))
+							pos: #pos
+						})
+						pos: #pos
+					}, {
+						expr: EBlock([{
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(h))
+									pos: #pos
+								}, setHeader, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CString(Content-Type, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(application/json, DoubleQuotes))
+								pos: #pos
+							}])
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(h))
+									pos: #pos
+								}, setPostData, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(jsonBody))
+								pos: #pos
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					}, null)
+					pos: #pos
+				}, {
+					expr: EIf({
+						expr: EBinop(OpNotEq, {
+							expr: EConst(CIdent(cookieJar))
+							pos: #pos
+						}, {
+							expr: EConst(CIdent(null))
+							pos: #pos
+						})
+						pos: #pos
+					}, {
+						expr: EBlock([{
+							expr: EFor({
+								expr: EBinop(OpIn, {
+									expr: EConst(CIdent(c))
+									pos: #pos
+								}, {
+									expr: ECall({
+										expr: EField({
+											expr: EConst(CIdent(cookieJar))
+											pos: #pos
+										}, getAllCookies, Normal)
+										pos: #pos
+									}, [])
+									pos: #pos
+								})
+								pos: #pos
+							}, {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpEq, {
+											expr: EField({
+												expr: EConst(CIdent(c))
+												pos: #pos
+											}, name, Normal)
+											pos: #pos
+										}, {
+											expr: EConst(CString(session_token, DoubleQuotes))
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EField({
+													expr: EConst(CIdent(h))
+													pos: #pos
+												}, setHeader, Normal)
+												pos: #pos
+											}, [{
+												expr: EConst(CString(Authorization, DoubleQuotes))
+												pos: #pos
+											}, {
+												expr: EBinop(OpAdd, {
+													expr: EConst(CString(Bearer , DoubleQuotes))
+													pos: #pos
+												}, {
+													expr: EField({
+														expr: EConst(CIdent(c))
+														pos: #pos
+													}, value, Normal)
+													pos: #pos
+												})
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] Added Authorization header from session_token cookie, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, null)
+									pos: #pos
+								}])
+								pos: #pos
+							})
+							pos: #pos
+						}])
+						pos: #pos
+					}, null)
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EField({
+							expr: EConst(CIdent(h))
+							pos: #pos
+						}, onError, Normal)
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onError))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: EIf({
+						expr: EBinop(OpBoolOr, {
+							expr: EBinop(OpEq, {
+								expr: EConst(CIdent(method))
+								pos: #pos
+							}, {
+								expr: EConst(CString(PUT, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: EBinop(OpEq, {
+								expr: EConst(CIdent(method))
+								pos: #pos
+							}, {
+								expr: EConst(CString(DELETE, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						})
+						pos: #pos
+					}, {
+						expr: EBlock([{
+							expr: ECall({
+								expr: EConst(CIdent(trace))
+								pos: #pos
+							}, [{
+								expr: EBinop(OpAdd, {
+									expr: EConst(CString([AutoClientAsync] using XMLHttpRequest for , SingleQuotes))
+									pos: #pos
+								}, {
+									expr: EConst(CIdent(method))
+									pos: #pos
+								})
+								pos: #pos
+							}])
+							pos: #pos
+						}, {
+							expr: EVars([{
+								expr: {
+									expr: ENew({
+										name: XMLHttpRequest
+										pack: [js, html]
+										params: []
+										sub: null
+									}, [])
+									pos: #pos
+								}
+								isFinal: false
+								isStatic: false
+								meta: []
+								name: xhr
+								namePos: #pos
+								type: null
+							}])
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(xhr))
+									pos: #pos
+								}, open, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(method))
+								pos: #pos
+							}, {
+								expr: EConst(CIdent(full))
+								pos: #pos
+							}, {
+								expr: EConst(CIdent(true))
+								pos: #pos
+							}])
+							pos: #pos
+						}, {
+							expr: EBinop(OpAssign, {
+								expr: EField({
+									expr: EConst(CIdent(xhr))
+									pos: #pos
+								}, withCredentials, Normal)
+								pos: #pos
+							}, {
+								expr: EConst(CIdent(true))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(xhr))
+									pos: #pos
+								}, setRequestHeader, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CString(Accept, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(application/json, DoubleQuotes))
+								pos: #pos
+							}])
+							pos: #pos
+						}, {
+							expr: EIf({
+								expr: EBinop(OpNotEq, {
+									expr: EConst(CIdent(jsonBody))
+									pos: #pos
+								}, {
+									expr: EConst(CIdent(null))
+									pos: #pos
+								})
+								pos: #pos
+							}, {
+								expr: ECall({
+									expr: EField({
+										expr: EConst(CIdent(xhr))
+										pos: #pos
+									}, setRequestHeader, Normal)
+									pos: #pos
+								}, [{
+									expr: EConst(CString(Content-Type, DoubleQuotes))
+									pos: #pos
+								}, {
+									expr: EConst(CString(application/json, DoubleQuotes))
+									pos: #pos
+								}])
+								pos: #pos
+							}, null)
+							pos: #pos
+						}, {
+							expr: EIf({
+								expr: EBinop(OpNotEq, {
+									expr: EConst(CIdent(cookieJar))
+									pos: #pos
+								}, {
+									expr: EConst(CIdent(null))
+									pos: #pos
+								})
+								pos: #pos
+							}, {
+								expr: EBlock([{
+									expr: EFor({
+										expr: EBinop(OpIn, {
+											expr: EConst(CIdent(c))
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EField({
+													expr: EConst(CIdent(cookieJar))
+													pos: #pos
+												}, getAllCookies, Normal)
+												pos: #pos
+											}, [])
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: EIf({
+												expr: EBinop(OpEq, {
+													expr: EField({
+														expr: EConst(CIdent(c))
+														pos: #pos
+													}, name, Normal)
+													pos: #pos
+												}, {
+													expr: EConst(CString(session_token, DoubleQuotes))
+													pos: #pos
+												})
+												pos: #pos
+											}, {
+												expr: EBlock([{
+													expr: ECall({
+														expr: EField({
+															expr: EConst(CIdent(xhr))
+															pos: #pos
+														}, setRequestHeader, Normal)
+														pos: #pos
+													}, [{
+														expr: EConst(CString(Authorization, DoubleQuotes))
+														pos: #pos
+													}, {
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString(Bearer , DoubleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(c))
+																pos: #pos
+															}, value, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, null)
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}, null)
+							pos: #pos
+						}, {
+							expr: EBinop(OpAssign, {
+								expr: EField({
+									expr: EConst(CIdent(xhr))
+									pos: #pos
+								}, onreadystatechange, Normal)
+								pos: #pos
+							}, {
+								expr: EFunction(FAnonymous, {
+									args: []
+									expr: {
+										expr: EBlock([{
+											expr: EIf({
+												expr: EBinop(OpEq, {
+													expr: EField({
+														expr: EConst(CIdent(xhr))
+														pos: #pos
+													}, readyState, Normal)
+													pos: #pos
+												}, {
+													expr: EConst(CInt(4, null))
+													pos: #pos
+												})
+												pos: #pos
+											}, {
+												expr: EBlock([{
+													expr: EIf({
+														expr: EBinop(OpBoolAnd, {
+															expr: EBinop(OpGte, {
+																expr: EField({
+																	expr: EConst(CIdent(xhr))
+																	pos: #pos
+																}, status, Normal)
+																pos: #pos
+															}, {
+																expr: EConst(CInt(200, null))
+																pos: #pos
+															})
+															pos: #pos
+														}, {
+															expr: EBinop(OpLt, {
+																expr: EField({
+																	expr: EConst(CIdent(xhr))
+																	pos: #pos
+																}, status, Normal)
+																pos: #pos
+															}, {
+																expr: EConst(CInt(300, null))
+																pos: #pos
+															})
+															pos: #pos
+														})
+														pos: #pos
+													}, {
+														expr: EBlock([{
+															expr: ECall({
+																expr: EConst(CIdent(onData))
+																pos: #pos
+															}, [{
+																expr: EField({
+																	expr: EConst(CIdent(xhr))
+																	pos: #pos
+																}, responseText, Normal)
+																pos: #pos
+															}])
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: EBlock([{
+															expr: ECall({
+																expr: EConst(CIdent(onError))
+																pos: #pos
+															}, [{
+																expr: EBinop(OpAdd, {
+																	expr: EBinop(OpAdd, {
+																		expr: EBinop(OpAdd, {
+																			expr: EConst(CString(HTTP , SingleQuotes))
+																			pos: #pos
+																		}, {
+																			expr: EField({
+																				expr: EConst(CIdent(xhr))
+																				pos: #pos
+																			}, status, Normal)
+																			pos: #pos
+																		})
+																		pos: #pos
+																	}, {
+																		expr: EConst(CString( , SingleQuotes))
+																		pos: #pos
+																	})
+																	pos: #pos
+																}, {
+																	expr: EField({
+																		expr: EConst(CIdent(xhr))
+																		pos: #pos
+																	}, statusText, Normal)
+																	pos: #pos
+																})
+																pos: #pos
+															}])
+															pos: #pos
+														}])
+														pos: #pos
+													})
+													pos: #pos
+												}])
+												pos: #pos
+											}, null)
+											pos: #pos
+										}])
+										pos: #pos
+									}
+									params: []
+									ret: null
+								})
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ETry({
+								expr: EBlock([{
+									expr: ECall({
+										expr: EField({
+											expr: EConst(CIdent(xhr))
+											pos: #pos
+										}, send, Normal)
+										pos: #pos
+									}, [{
+										expr: ETernary({
+											expr: EBinop(OpNotEq, {
+												expr: EConst(CIdent(jsonBody))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EConst(CIdent(jsonBody))
+											pos: #pos
+										}, {
+											expr: EConst(CIdent(null))
+											pos: #pos
+										})
+										pos: #pos
+									}])
+									pos: #pos
+								}])
+								pos: #pos
+							}, [{
+								expr: {
+									expr: EBlock([{
+										expr: ECall({
+											expr: EConst(CIdent(trace))
+											pos: #pos
+										}, [{
+											expr: EBinop(OpAdd, {
+												expr: EConst(CString([AutoClientAsync] XHR error , SingleQuotes))
+												pos: #pos
+											}, {
+												expr: ECall({
+													expr: EField({
+														expr: EConst(CIdent(Std))
+														pos: #pos
+													}, string, Normal)
+													pos: #pos
+												}, [{
+													expr: EConst(CIdent(e))
+													pos: #pos
+												}])
+												pos: #pos
+											})
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: ECall({
+											expr: EConst(CIdent(onError))
+											pos: #pos
+										}, [{
+											expr: EConst(CIdent(e))
+											pos: #pos
+										}])
+										pos: #pos
+									}])
+									pos: #pos
+								}
+								name: e
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					}, {
+						expr: EBlock([{
+							expr: EBinop(OpAssign, {
+								expr: EField({
+									expr: EConst(CIdent(h))
+									pos: #pos
+								}, onData, Normal)
+								pos: #pos
+							}, {
+								expr: EFunction(FAnonymous, {
+									args: [{
+										meta: null
+										name: d
+										opt: false
+										type: TPath({
+											name: String
+											pack: []
+											params: []
+											sub: null
+										})
+										value: null
+									}]
+									expr: {
+										expr: ECall({
+											expr: EConst(CIdent(onData))
+											pos: #pos
+										}, [{
+											expr: EConst(CIdent(d))
+											pos: #pos
+										}])
+										pos: #pos
+									}
+									params: []
+									ret: null
+								})
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EConst(CIdent(trace))
+								pos: #pos
+							}, [{
+								expr: EBinop(OpAdd, {
+									expr: EConst(CString([AutoClientAsync] invoking request isPost=, SingleQuotes))
+									pos: #pos
+								}, {
+									expr: EParenthesis({
+										expr: EBinop(OpEq, {
+											expr: EConst(CIdent(method))
+											pos: #pos
+										}, {
+											expr: EConst(CString(POST, DoubleQuotes))
+											pos: #pos
+										})
+										pos: #pos
+									})
+									pos: #pos
+								})
+								pos: #pos
+							}])
+							pos: #pos
+						}, {
+							expr: ETry({
+								expr: ECall({
+									expr: EField({
+										expr: EConst(CIdent(h))
+										pos: #pos
+									}, request, Normal)
+									pos: #pos
+								}, [{
+									expr: EBinop(OpEq, {
+										expr: EConst(CIdent(method))
+										pos: #pos
+									}, {
+										expr: EConst(CString(POST, DoubleQuotes))
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}, [{
+								expr: {
+									expr: ECall({
+										expr: EConst(CIdent(onError))
+										pos: #pos
+									}, [{
+										expr: EConst(CIdent(e))
+										pos: #pos
+									}])
+									pos: #pos
+								}
+								name: e
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(trace))
+						pos: #pos
+					}, [{
+						expr: EBinop(OpAdd, {
+							expr: EBinop(OpAdd, {
+								expr: EBinop(OpAdd, {
+									expr: EConst(CString([AutoClientAsync] doRequestAsync exit method=, SingleQuotes))
+									pos: #pos
+								}, {
+									expr: EConst(CIdent(method))
+									pos: #pos
+								})
+								pos: #pos
+							}, {
+								expr: EConst(CString( path=, SingleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: EConst(CIdent(path))
+							pos: #pos
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: doRequestAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: _id
+				opt: null
+				type: TPath({
+					name: StdTypes
+					pack: []
+					params: []
+					sub: Int
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: GetPageResponse
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/pub/cms/page/:id, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(StringTools))
+								pos: #pos
+							}, replace, Normal)
+							pos: #pos
+						}, [{
+							expr: EConst(CIdent(_p))
+							pos: #pos
+						}, {
+							expr: EBinop(OpAdd, {
+								expr: EConst(CString(:, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(id, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(Std))
+									pos: #pos
+								}, string, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(_id))
+								pos: #pos
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(GET, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(null))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: getPageAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: slug
+				opt: null
+				type: TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}, {
+				meta: null
+				name: published
+				opt: null
+				type: TPath({
+					name: StdTypes
+					pack: []
+					params: [TPType(TPath({
+						name: StdTypes
+						pack: []
+						params: []
+						sub: Bool
+					}))]
+					sub: Null
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: GetPageResponse
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/pub/cms/page/slug/:*slug, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(StringTools))
+								pos: #pos
+							}, replace, Normal)
+							pos: #pos
+						}, [{
+							expr: EConst(CIdent(_p))
+							pos: #pos
+						}, {
+							expr: EBinop(OpAdd, {
+								expr: EConst(CString(:, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(*slug, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(Std))
+									pos: #pos
+								}, string, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(null <- expected String))
+								pos: #pos
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(GET, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(null))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: getPageBySlugAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: request
+				opt: null
+				type: TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: CreatePageRequest
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: CreatePageResponse
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/page, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(POST, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(request))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: createPageAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: _id
+				opt: null
+				type: TPath({
+					name: StdTypes
+					pack: []
+					params: []
+					sub: Int
+				})
+				value: null
+			}, {
+				meta: null
+				name: request
+				opt: null
+				type: TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: UpdatePageRequest
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: UpdatePageResponse
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/page/:id, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(StringTools))
+								pos: #pos
+							}, replace, Normal)
+							pos: #pos
+						}, [{
+							expr: EConst(CIdent(_p))
+							pos: #pos
+						}, {
+							expr: EBinop(OpAdd, {
+								expr: EConst(CString(:, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(id, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(Std))
+									pos: #pos
+								}, string, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(_id))
+								pos: #pos
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(PUT, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(request))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: updatePageAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: ListPagesResponse
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/pages, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(GET, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(null))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: listPagesAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: _pageId
+				opt: null
+				type: TPath({
+					name: StdTypes
+					pack: []
+					params: []
+					sub: Int
+				})
+				value: null
+			}, {
+				meta: null
+				name: _versionId
+				opt: null
+				type: TPath({
+					name: StdTypes
+					pack: []
+					params: []
+					sub: Int
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: CreatePageResponse
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/page/:pageId/version/:versionId/publish, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(StringTools))
+								pos: #pos
+							}, replace, Normal)
+							pos: #pos
+						}, [{
+							expr: EConst(CIdent(_p))
+							pos: #pos
+						}, {
+							expr: EBinop(OpAdd, {
+								expr: EConst(CString(:, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(pageId, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(Std))
+									pos: #pos
+								}, string, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(_pageId))
+								pos: #pos
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(StringTools))
+								pos: #pos
+							}, replace, Normal)
+							pos: #pos
+						}, [{
+							expr: EConst(CIdent(_p))
+							pos: #pos
+						}, {
+							expr: EBinop(OpAdd, {
+								expr: EConst(CString(:, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(versionId, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(Std))
+									pos: #pos
+								}, string, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(_versionId))
+								pos: #pos
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(POST, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(null))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: publishVersionAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: _versionId
+				opt: null
+				type: TPath({
+					name: StdTypes
+					pack: []
+					params: []
+					sub: Int
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: UpdatePageResponse
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/version/:versionId/restore, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(StringTools))
+								pos: #pos
+							}, replace, Normal)
+							pos: #pos
+						}, [{
+							expr: EConst(CIdent(_p))
+							pos: #pos
+						}, {
+							expr: EBinop(OpAdd, {
+								expr: EConst(CString(:, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(versionId, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(Std))
+									pos: #pos
+								}, string, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(_versionId))
+								pos: #pos
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(POST, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(null))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: restoreVersionAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: _pageId
+				opt: null
+				type: TPath({
+					name: StdTypes
+					pack: []
+					params: []
+					sub: Int
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/page/:pageId/versions, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(StringTools))
+								pos: #pos
+							}, replace, Normal)
+							pos: #pos
+						}, [{
+							expr: EConst(CIdent(_p))
+							pos: #pos
+						}, {
+							expr: EBinop(OpAdd, {
+								expr: EConst(CString(:, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(pageId, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(Std))
+									pos: #pos
+								}, string, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(_pageId))
+								pos: #pos
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(GET, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(null))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: listVersionsAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: request
+				opt: null
+				type: TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: UploadAssetRequest
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: UploadAssetResponse
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/asset, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(POST, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(request))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: uploadAssetAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: _assetId
+				opt: null
+				type: TPath({
+					name: StdTypes
+					pack: []
+					params: []
+					sub: Int
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/asset/:assetId, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(StringTools))
+								pos: #pos
+							}, replace, Normal)
+							pos: #pos
+						}, [{
+							expr: EConst(CIdent(_p))
+							pos: #pos
+						}, {
+							expr: EBinop(OpAdd, {
+								expr: EConst(CString(:, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(assetId, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(Std))
+									pos: #pos
+								}, string, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(_assetId))
+								pos: #pos
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(GET, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(null))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: getAssetAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: _pageId
+				opt: null
+				type: TPath({
+					name: StdTypes
+					pack: []
+					params: []
+					sub: Int
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/page/:pageId/assets, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EBinop(OpAssign, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(StringTools))
+								pos: #pos
+							}, replace, Normal)
+							pos: #pos
+						}, [{
+							expr: EConst(CIdent(_p))
+							pos: #pos
+						}, {
+							expr: EBinop(OpAdd, {
+								expr: EConst(CString(:, DoubleQuotes))
+								pos: #pos
+							}, {
+								expr: EConst(CString(pageId, DoubleQuotes))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: ECall({
+								expr: EField({
+									expr: EConst(CIdent(Std))
+									pos: #pos
+								}, string, Normal)
+								pos: #pos
+							}, [{
+								expr: EConst(CIdent(_pageId))
+								pos: #pos
+							}])
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(GET, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(null))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: listAssetsAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: json
+				opt: null
+				type: TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: CmsModels
+					pack: [app, models]
+					params: []
+					sub: ValidationResult
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/validate, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(POST, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(json))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: validateComponentsAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: prompt
+				opt: null
+				type: TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}, {
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/ai-prompt, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(POST, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(prompt))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: generateAiPromptAsync
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: onSuccess
+				opt: null
+				type: TFunction([TPath({
+					name: Array
+					pack: []
+					params: [TPType(TPath({
+						name: String
+						pack: []
+						params: []
+						sub: null
+					}))]
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}, {
+				meta: null
+				name: onFailure
+				opt: null
+				type: TFunction([TPath({
+					name: Dynamic
+					pack: []
+					params: []
+					sub: null
+				})], TPath({
+					name: Void
+					pack: []
+					params: []
+					sub: null
+				}))
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CString(/api/cms/component-types, DoubleQuotes))
+							pos: #pos
+						}
+						isFinal: false
+						isStatic: false
+						meta: []
+						name: _p
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(doRequestAsync))
+						pos: #pos
+					}, [{
+						expr: EConst(CString(GET, DoubleQuotes))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(_p))
+						pos: #pos
+					}, {
+						expr: EConst(CIdent(null))
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: d
+								opt: false
+								type: TPath({
+									name: String
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: EBlock([{
+									expr: EIf({
+										expr: EBinop(OpBoolOr, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CIdent(null))
+												pos: #pos
+											})
+											pos: #pos
+										}, {
+											expr: EBinop(OpEq, {
+												expr: EConst(CIdent(d))
+												pos: #pos
+											}, {
+												expr: EConst(CString(, DoubleQuotes))
+												pos: #pos
+											})
+											pos: #pos
+										})
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ECall({
+												expr: EConst(CIdent(trace))
+												pos: #pos
+											}, [{
+												expr: EConst(CString([AutoClientAsync] empty JSON body, SingleQuotes))
+												pos: #pos
+											}])
+											pos: #pos
+										}, {
+											expr: ECall({
+												expr: EConst(CIdent(onSuccess))
+												pos: #pos
+											}, [{
+												expr: EConst(CIdent(null))
+												pos: #pos
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									}, {
+										expr: EBlock([{
+											expr: ETry({
+												expr: EBlock([{
+													expr: ECall({
+														expr: EConst(CIdent(trace))
+														pos: #pos
+													}, [{
+														expr: EBinop(OpAdd, {
+															expr: EConst(CString([AutoClientAsync] parsing JSON length=, SingleQuotes))
+															pos: #pos
+														}, {
+															expr: EField({
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}, length, Normal)
+															pos: #pos
+														})
+														pos: #pos
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(haxe))
+																		pos: #pos
+																	}, Json, Normal)
+																	pos: #pos
+																}, parse, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(d))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: raw
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: EVars([{
+														expr: {
+															expr: ECall({
+																expr: EField({
+																	expr: EField({
+																		expr: EConst(CIdent(sidewinder))
+																		pos: #pos
+																	}, AutoClientAsync, Normal)
+																	pos: #pos
+																}, normalizeDates, Normal)
+																pos: #pos
+															}, [{
+																expr: EConst(CIdent(raw))
+																pos: #pos
+															}])
+															pos: #pos
+														}
+														isFinal: false
+														isStatic: false
+														meta: []
+														name: converted
+														namePos: #pos
+														type: null
+													}])
+													pos: #pos
+												}, {
+													expr: ECall({
+														expr: EConst(CIdent(onSuccess))
+														pos: #pos
+													}, [{
+														expr: EConst(CIdent(converted))
+														pos: #pos
+													}])
+													pos: #pos
+												}])
+												pos: #pos
+											}, [{
+												expr: {
+													expr: EBlock([{
+														expr: ECall({
+															expr: EConst(CIdent(trace))
+															pos: #pos
+														}, [{
+															expr: EBinop(OpAdd, {
+																expr: EConst(CString([AutoClientAsync] JSON parse error , SingleQuotes))
+																pos: #pos
+															}, {
+																expr: ECall({
+																	expr: EField({
+																		expr: EConst(CIdent(Std))
+																		pos: #pos
+																	}, string, Normal)
+																	pos: #pos
+																}, [{
+																	expr: EConst(CIdent(e))
+																	pos: #pos
+																}])
+																pos: #pos
+															})
+															pos: #pos
+														}])
+														pos: #pos
+													}, {
+														expr: ECall({
+															expr: EConst(CIdent(onFailure))
+															pos: #pos
+														}, [{
+															expr: EConst(CIdent(e))
+															pos: #pos
+														}])
+														pos: #pos
+													}])
+													pos: #pos
+												}
+												name: e
+												type: TPath({
+													name: Dynamic
+													pack: []
+													params: []
+													sub: null
+												})
+											}])
+											pos: #pos
+										}])
+										pos: #pos
+									})
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}, {
+						expr: EFunction(FAnonymous, {
+							args: [{
+								meta: null
+								name: e
+								opt: false
+								type: TPath({
+									name: Dynamic
+									pack: []
+									params: []
+									sub: null
+								})
+								value: null
+							}]
+							expr: {
+								expr: ECall({
+									expr: EConst(CIdent(onFailure))
+									pos: #pos
+								}, [{
+									expr: EConst(CIdent(e))
+									pos: #pos
+								}])
+								pos: #pos
+							}
+							params: []
+							ret: null
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Void
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: getComponentTypesAsync
+		pos: #pos
+	}]
+	isExtern: false
+	kind: TDClass(null, [], false, null, null)
+	meta: []
+	name: ICmsService_AutoClientAsync_147412
+	pack: [sidewinder]
+	params: []
+	pos: #pos
+}
+line 1516: expected String
