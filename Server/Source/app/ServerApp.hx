@@ -24,6 +24,11 @@ import app.util.VersionRestorer;
 import app.services.DatabaseSeeder;
 
 class ServerApp extends ServerBootstrap {
+	override public function configure():Void {
+		super.configure();
+		config.directory = "static";
+	}
+
 	override public function configureServices(services:ServiceCollection):Void {
 		services.addService(ServiceType.Scoped, IAuthService, AuthService);
 		services.addService(ServiceType.Scoped, ICmsService, CmsService);

@@ -26,7 +26,7 @@ class PageNavigator {
 	public var currentPage:String;
 	public var currentAnchor:String;
 	public var onBeforeNavigate:Array<Void->Bool> = [];
-	public var onNavigate:Array<Void->Void> = [];
+	public var onNavigate:Array<GetPageResponse->Void> = [];
 	public var appState:AppState;
 	public var cmsManager:ICmsManager;
 	public var renderer:PageRenderer;
@@ -78,7 +78,7 @@ class PageNavigator {
 			cmsManager.getPage(numericId != null ? numericId : 0, function(response:GetPageResponse) {
 				if (response.success && response.page != null) {
 					for (hook in onNavigate) {
-						hook();
+						hook(response);
 					}
 				}
 			});
@@ -90,7 +90,7 @@ class PageNavigator {
 			cmsManager.getPageBySlug(slug, true, function(response:GetPageResponse) {
 				if (response.success && response.page != null) {
 					for (hook in onNavigate) {
-						hook();
+						hook(response);
 					}
 				}
 			});
@@ -110,7 +110,7 @@ class PageNavigator {
 	/**
 	 * Register a hook to run after navigation.
 	 */
-	public function addNavigateHook(hook:Void->Void) {
+	public function addNavigateHook(hook:GetPageResponse->Void) {
 		onNavigate.push(hook);
 	}
 

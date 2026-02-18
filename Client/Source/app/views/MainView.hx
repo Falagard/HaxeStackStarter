@@ -59,8 +59,8 @@ class MainView extends VBox {
 		updateUserDisplay();
 
 		// Listen for navigation events to update UI
-		pageNavigator.onNavigate.push(function() {
-			renderActivePage();
+		pageNavigator.onNavigate.push(function(response:GetPageResponse) {
+			renderActivePage(response);
 		});
 
 		// Handle deep link from URL on app load, or navigate to default page 3
@@ -78,37 +78,15 @@ class MainView extends VBox {
 	}
 
 	/** Render the active page using PageNavigator */
-	private function renderActivePage():Void {
+	private function renderActivePage(response:GetPageResponse):Void {
 		contentPlaceholder.removeAllComponents();
-		var currentPageId = pageNavigator.currentPage;
-		var firstChar = currentPageId.charAt(0);
-		var isNumeric = (firstChar >= "0" && firstChar <= "9");
-		if (isNumeric) {
-			var pageIdInt = Std.parseInt(currentPageId);
-			cmsManager.getPage(pageIdInt, function(response:GetPageResponse) {
-				if (response.success && response.page != null) {
-					var rendered = pageRenderer.renderPage(response.page, pageNavigator.currentAnchor);
-					contentPlaceholder.addComponent(rendered);
-				} else {
-					var errorLabel = new haxe.ui.components.Label();
-					errorLabel.text = "Failed to load page.";
-					contentPlaceholder.addComponent(errorLabel);
-				}
-			});
+		if (response.success && response.page != null) {
+			var rendered = pageRenderer.renderPage(response.page, pageNavigator.currentAnchor);
+			contentPlaceholder.addComponent(rendered);
 		} else {
-			var slug = currentPageId;
-			if (slug.charAt(0) == "/")
-				slug = slug.substr(1);
-			cmsManager.getPageBySlug(slug, true, function(response:GetPageResponse) {
-				if (response.success && response.page != null) {
-					var rendered = pageRenderer.renderPage(response.page, pageNavigator.currentAnchor);
-					contentPlaceholder.addComponent(rendered);
-				} else {
-					var errorLabel = new haxe.ui.components.Label();
-					errorLabel.text = "Failed to load page.";
-					contentPlaceholder.addComponent(errorLabel);
-				}
-			});
+			var errorLabel = new haxe.ui.components.Label();
+			errorLabel.text = "Failed to load page.";
+			contentPlaceholder.addComponent(errorLabel);
 		}
 	}
 
