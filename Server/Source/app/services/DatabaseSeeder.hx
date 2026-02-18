@@ -66,7 +66,7 @@ class DatabaseSeeder implements Service {
 	private function seedUsers():String {
 		var request:RegisterRequest = {
 			email: "admin@example.com",
-			password: "password123",
+			password: "SideWinder2024!",
 			username: "Admin User"
 		};
 		var response = auth.register(request);
@@ -107,6 +107,15 @@ class DatabaseSeeder implements Service {
 			slug: slug,
 			title: title,
 			layout: "default",
+			components: [
+				{
+					id: 0,
+					type: "text",
+					sort: 0,
+					data: {text: content},
+					visibilityConfig: {visibilityMode: "Public", groupIds: []}
+				}
+			],
 			seoHtml: content
 		};
 		cms.createPage(request, userId);

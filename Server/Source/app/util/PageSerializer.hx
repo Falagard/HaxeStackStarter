@@ -117,7 +117,8 @@ class PageSerializer implements Service {
 		}
 	}
 
-	public function createPage(slug:String, title:String, layout:String = "default", ?seoHtml:String, ?conn:sys.db.Connection):Int {
+	public function createPage(slug:String, title:String, layout:String = "default", ?components:Array<PageComponentDTO>, ?seoHtml:String,
+			?conn:sys.db.Connection):Int {
 		var conn = db.acquire();
 		try {
 			var params = new Map<String, Dynamic>();
@@ -127,13 +128,13 @@ class PageSerializer implements Service {
 			conn.request(db.buildSql(sql, params));
 			var pageId = conn.lastInsertId();
 
-			// Create initial empty version
+			// Create initial version
 			var page:PageDTO = {
 				pageId: pageId,
 				title: title,
 				layout: layout,
 				slug: slug,
-				components: [],
+				components: components != null ? components : [],
 				visibilityConfig: {visibilityMode: "Public", groupIds: []}
 			};
 			var versionId = savePageVersion(page, null, seoHtml, conn);

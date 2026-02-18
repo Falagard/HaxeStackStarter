@@ -53,7 +53,7 @@ class CmsService implements ICmsService {
 				}
 
 				var layout = request.layout != null ? request.layout : "default";
-				var pageId = serializer.createPage(request.slug, request.title, layout, request.seoHtml, conn);
+				var pageId = serializer.createPage(request.slug, request.title, layout, request.components, request.seoHtml, conn);
 
 				db.release(conn);
 				return {success: true, pageId: pageId};

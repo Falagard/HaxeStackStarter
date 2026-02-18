@@ -39,6 +39,7 @@ typedef CreatePageRequest = {
 	slug:String,
 	title:String,
 	layout:String,
+	?components:Array<PageComponentDTO>,
 	?seoHtml:String
 };
 
