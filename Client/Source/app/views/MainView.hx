@@ -45,7 +45,7 @@ class MainView extends VBox {
 		super();
 
 		var sidebar = new SidebarView();
-		this.addComponent(sidebar); // Add to root for floating behavior
+		// this.addComponent(sidebar); // Add to root for floating behavior
 
 		var menuButton = findComponent("menuButton", Button);
 		if (menuButton != null) {
