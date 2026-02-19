@@ -117,9 +117,25 @@ class MegaMenuComponent extends VBox {
 		if (item.url != null) {
 			link.onClick = function(e) {
 				trace("Navigate to: " + item.url);
-				#if js
-				js.Browser.window.location.href = item.url;
-				#end
+				var dest = item.url;
+				var isExternal = dest.indexOf("http") == 0;
+
+				if (!isExternal && app.state.PageNavigator.instance != null) {
+					// Remove hash if present for internal navigation
+					if (dest.indexOf("#") == 0) {
+						dest = dest.substr(1);
+					}
+
+					var parts = dest.split(':');
+					var pageId = parts[0];
+					var anchor = parts.length > 1 ? parts[1] : null;
+
+					app.state.PageNavigator.instance.navigate(pageId, anchor);
+				} else {
+					#if js
+					js.Browser.window.location.href = item.url;
+					#end
+				}
 			};
 		}
 
