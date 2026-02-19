@@ -1,16 +1,22 @@
 <vbox percentWidth="100" percentHeight="100">
     <!-- Top bar with user info and logout -->
     <hbox id="topBar" percentWidth="100" styleName="topBar">
+        <button id="menuButton" icon="fa-bars" text="Menu" />
         <label text="HaxeStack Starter" styleName="appTitle" />
         <button id="cmsBtn" text="CMS" />
         <spacer percentWidth="100" />
         <label id="userLabel" text="" styleName="userLabel" />
         <button id="logoutBtn" text="Sign Out" styleName="logoutBtn" />
     </hbox>
-    <!-- Main content placeholder -->
-    <vbox id="contentPlaceholder" percentWidth="100" percentHeight="100" style="padding:20px;">
-        <label text="Welcome to HaxeStack Starter" style="font-size:24px; font-weight:bold; margin-bottom:10px;" />
-        <label text="Your application is ready to use." style="font-size:14px; color:#666;" />
-    </vbox>
+    <!-- Main content area with Sidebar -->
+    <hbox id="mainLayout" percentWidth="100" percentHeight="100">
+        <!-- Sidebar will be added here programmatically -->
+        
+        <!-- Main content placeholder -->
+        <vbox id="contentPlaceholder" percentWidth="100" percentHeight="100" style="padding:20px;">
+            <label text="Welcome to HaxeStack Starter" style="font-size:24px; font-weight:bold; margin-bottom:10px;" />
+            <label text="Your application is ready to use." style="font-size:14px; color:#666;" />
+        </vbox>
+    </hbox>
     <vbox id="toastContainer" width="320" styleName="toastContainer" />
 </vbox>

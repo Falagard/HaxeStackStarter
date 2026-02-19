@@ -1,8 +1,10 @@
 package app.views;
 
 import haxe.ui.containers.VBox;
+import haxe.ui.components.Button;
 import app.cms.megamenu.MegaMenuView;
 import app.cms.megamenu.MegaMenuAdminDialog;
+import app.views.SidebarView;
 import haxe.ui.components.Button;
 import haxe.ui.components.Label;
 import app.state.AppState;
@@ -24,6 +26,7 @@ class MainView extends VBox {
 	var logoutBtn:Button; // from XML - logout button
 	var cmsBtn:Button; // from XML - CMS button
 	var contentPlaceholder:VBox; // from XML - main content area
+	var mainLayout:haxe.ui.containers.HBox; // from XML
 
 	var appState = AppState.instance;
 	var asyncServices = AppState.instance.asyncServices;
@@ -40,6 +43,20 @@ class MainView extends VBox {
 
 	public function new() {
 		super();
+
+		var sidebar = new SidebarView();
+		this.addComponent(sidebar); // Add to root for floating behavior
+
+		var menuButton = findComponent("menuButton", Button);
+		if (menuButton != null) {
+			menuButton.onClick = function(e) {
+				if (sidebar.hidden) {
+					sidebar.show();
+				} else {
+					sidebar.hide();
+				}
+			};
+		}
 
 		// Initialize CMS manager
 		cmsManager = DI.get(ICmsManager);

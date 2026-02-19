@@ -1,0 +1,8 @@
+<box width="100%" height="100%" style="padding: 10px; background-color: #f5f5f5; border-right: 1px solid #ddd;">
+    <vbox width="100%">
+    <button id="closeSideBar" text="Close" icon="fa-times" />
+    <button text="Home" width="100%" icon="fa-home" />
+    <button text="Dashboard" width="100%" icon="fa-chart-bar" />
+    <button text="Settings" width="100%" icon="fa-cog" />
+    </vbox>
+</box>
