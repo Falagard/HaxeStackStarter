@@ -26,7 +26,23 @@ import app.services.DatabaseSeeder;
 class ServerApp extends ServerBootstrap {
 	override public function configure():Void {
 		super.configure();
-		config.directory = "static";
+		var staticDir = "static";
+		var cwd = Sys.getCwd();
+
+		// If common static directory doesn't exist here, try common relative paths
+		if (!sys.FileSystem.exists(staticDir)) {
+			if (sys.FileSystem.exists("../../static")) {
+				staticDir = "../../static";
+			}
+		}
+
+		try {
+			// Ensure we have an absolute path for CivetWeb and use forward slashes
+			var fullPath = sys.FileSystem.fullPath(staticDir);
+			config.directory = fullPath.split("\\").join("/");
+		} catch (e:Dynamic) {
+			config.directory = staticDir;
+		}
 	}
 
 	override public function configureServices(services:ServiceCollection):Void {

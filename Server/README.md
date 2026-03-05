@@ -42,6 +42,8 @@ This is the backend server for the HaxeStackStarter project, built with Haxe, Li
 2. You can add a breakpoint in the `new()` constructor or specifically where it calls `super()`.
 3. Press **F5** to start debugging.
 
+If you get an error about a missing configuration, click the Lime button in the bottom of the VS window and select Haxe completion provider to "Project using Lime/OpenFL command-line tools".
+
 This will build the project for HashLink, copy necessary native libraries, and launch the server with the debugger attached.
 
 ### Running via Command Line

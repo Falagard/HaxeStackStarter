@@ -70,7 +70,7 @@ class ServerBootstrap extends Application {
 		// Start server
 
 		// Start server
-		httpServer = WebServerFactory.create(sidewinder.WebServerFactory.WebServerType.CivetWeb, config.host, config.port, SideWinderRequestHandler,
+		httpServer = WebServerFactory.create(sidewinder.WebServerFactory.WebServerType.SnakeServer, config.host, config.port, SideWinderRequestHandler,
 			config.directory);
 		httpServer.start();
 	}
