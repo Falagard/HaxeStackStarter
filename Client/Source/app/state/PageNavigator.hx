@@ -25,6 +25,10 @@ class PageNavigator {
 
 	public var currentPage:String;
 	public var currentAnchor:String;
+	/**
+	 * The current query parameters, parsed from the URL hash (e.g., #products?product_id=123)
+	 */
+	public var currentQueryParams:Map<String, String> = new Map();
 	public var onBeforeNavigate:Array<Void->Bool> = [];
 	public var onNavigate:Array<GetPageResponse->Void> = [];
 	public var appState:AppState;
@@ -41,12 +45,21 @@ class PageNavigator {
 		js.Browser.window.onhashchange = function(_) {
 			var hash = js.Browser.window.location.hash;
 			if (hash != null && hash.length > 1) {
-				var parts = hash.substr(1).split(':');
+				var hashContent = hash.substr(1);
+				var queryIndex = hashContent.indexOf("?");
+				var queryString = "";
+				var mainPart = hashContent;
+				if (queryIndex != -1) {
+					mainPart = hashContent.substr(0, queryIndex);
+					queryString = hashContent.substr(queryIndex + 1);
+				}
+				var parts = mainPart.split(":");
 				var pageId = parts[0];
 				var anchor = parts.length > 1 ? parts[1] : null;
-				// Avoid re-navigating if we're already on this page/anchor
-				if (pageId != instance.currentPage || anchor != instance.currentAnchor) {
-					navigate(pageId, anchor);
+				var params = parseQueryString(queryString);
+				// Avoid re-navigating if we're already on this page/anchor/params
+				if (pageId != instance.currentPage || anchor != instance.currentAnchor || !mapEquals(params, instance.currentQueryParams)) {
+					navigate(pageId, anchor, params);
 				}
 			}
 		};
@@ -57,7 +70,11 @@ class PageNavigator {
 	 * Request navigation to a page and optional anchor.
 	 * Returns true if navigation succeeded, false if blocked.
 	 */
-	public function navigate(pageId:String, ?anchor:String):Bool {
+	/**
+	 * Request navigation to a page, optional anchor, and optional query parameters.
+	 * Returns true if navigation succeeded, false if blocked.
+	 */
+	public function navigate(pageId:String, ?anchor:String, ?queryParams:Map<String, String>):Bool {
 		// Fire beforeNavigate hooks, allow blocking
 		for (hook in onBeforeNavigate) {
 			if (!hook())
@@ -65,6 +82,7 @@ class PageNavigator {
 		}
 		currentPage = pageId;
 		currentAnchor = anchor;
+		currentQueryParams = queryParams != null ? queryParams : new Map();
 		appState.currentPage = pageId;
 		appState.currentAnchor = anchor;
 		// Determine if the pageId is numeric or a slug path
@@ -96,7 +114,7 @@ class PageNavigator {
 			});
 		}
 		// Update deep link (URL)
-		updateUrl(pageId, anchor);
+		updateUrl(pageId, anchor, currentQueryParams);
 		return true;
 	}
 
@@ -117,10 +135,21 @@ class PageNavigator {
 	/**
 	 * Update browser URL for deep linking.
 	 */
-	public function updateUrl(pageId:String, ?anchor:String) {
+	/**
+	 * Update browser URL for deep linking, including query parameters.
+	 */
+	public function updateUrl(pageId:String, ?anchor:String, ?queryParams:Map<String, String>) {
 		var url = '#' + pageId;
 		if (anchor != null && anchor != "")
 			url += ':' + anchor;
+		if (queryParams != null && !queryParams.isEmpty()) {
+			var first = true;
+			for (k in queryParams.keys()) {
+				url += first ? '?' : '&';
+				url += encodeURIComponent(k) + '=' + encodeURIComponent(queryParams.get(k));
+				first = false;
+			}
+		}
 		#if html5
 		js.Browser.window.location.hash = url;
 		#end
@@ -130,17 +159,64 @@ class PageNavigator {
 	 * Parse deep link from URL and navigate on app load.
 	 * Returns true if handled, false if no deep link present.
 	 */
+	/**
+	 * Parse deep link from URL and navigate on app load, including query parameters.
+	 * Returns true if handled, false if no deep link present.
+	 */
 	public function handleInitialDeepLink():Bool {
 		#if html5
 		var hash = js.Browser.window.location.hash;
 		if (hash != null && hash.length > 1) {
-			var parts = hash.substr(1).split(':');
+			var hashContent = hash.substr(1);
+			var queryIndex = hashContent.indexOf("?");
+			var queryString = "";
+			var mainPart = hashContent;
+			if (queryIndex != -1) {
+				mainPart = hashContent.substr(0, queryIndex);
+				queryString = hashContent.substr(queryIndex + 1);
+			}
+			var parts = mainPart.split(":");
 			var pageId = parts[0];
 			var anchor = parts.length > 1 ? parts[1] : null;
-			navigate(pageId, anchor);
+			var params = parseQueryString(queryString);
+			navigate(pageId, anchor, params);
 			return true;
 		}
 		#end
 		return false;
+	}
+
+	/**
+	 * Parse a query string (e.g., "product_id=123&foo=bar") into a Map<String, String>.
+	 */
+	function parseQueryString(query:String):Map<String, String> {
+		var map = new Map<String, String>();
+		if (query != null && query != "") {
+			var pairs = query.split('&');
+			for (pair in pairs) {
+				var eq = pair.indexOf('=');
+				if (eq > 0) {
+					var key = decodeURIComponent(pair.substr(0, eq));
+					var value = decodeURIComponent(pair.substr(eq + 1));
+					map.set(key, value);
+				} else if (pair != "") {
+					map.set(decodeURIComponent(pair), "");
+				}
+			}
+		}
+		return map;
+	}
+
+	/**
+	 * Compare two maps for equality (shallow, string keys/values).
+	 */
+	function mapEquals(a:Map<String, String>, b:Map<String, String>):Bool {
+		if (a == null && b == null) return true;
+		if (a == null || b == null) return false;
+		if (a.keys().length != b.keys().length) return false;
+		for (k in a.keys()) {
+			if (!b.exists(k) || a.get(k) != b.get(k)) return false;
+		}
+		return true;
 	}
 }
