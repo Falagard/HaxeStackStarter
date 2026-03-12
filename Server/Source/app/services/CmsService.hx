@@ -8,8 +8,8 @@ import app.util.VersionRestorer;
 import app.util.JsonValidator;
 import app.util.ComponentSchema;
 import haxe.Json;
-import sidewinder.IDatabaseService;
-import sidewinder.DI;
+import sidewinder.interfaces.IDatabaseService;
+import sidewinder.core.DI;
 
 class CmsService implements ICmsService {
 	private var db:IDatabaseService;

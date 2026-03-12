@@ -6,7 +6,9 @@ import app.models.MegaMenuModels;
 import app.services.ICmsService;
 import app.services.IMegaMenuService;
 import app.services.IAuthService;
-import sidewinder.HybridLogger;
+import sidewinder.logging.HybridLogger;
+import sidewinder.core.DI;
+import sidewinder.interfaces.IDatabaseService;
 import hx.injection.Service;
 
 class DatabaseSeeder implements Service {
@@ -15,9 +17,9 @@ class DatabaseSeeder implements Service {
 	var auth:IAuthService;
 
 	public function new(?cms:ICmsService, ?megaMenu:IMegaMenuService, ?auth:IAuthService) {
-		this.cms = cms != null ? cms : sidewinder.DI.get(ICmsService);
-		this.megaMenu = megaMenu != null ? megaMenu : sidewinder.DI.get(IMegaMenuService);
-		this.auth = auth != null ? auth : sidewinder.DI.get(IAuthService);
+		this.cms = cms != null ? cms : DI.get(ICmsService);
+		this.megaMenu = megaMenu != null ? megaMenu : DI.get(IMegaMenuService);
+		this.auth = auth != null ? auth : DI.get(IAuthService);
 	}
 
 	public function seed():Void {
@@ -38,27 +40,27 @@ class DatabaseSeeder implements Service {
 	}
 
 	private function shouldSeedUsers():Bool {
-		var conn = sidewinder.DI.get(sidewinder.IDatabaseService).acquire();
+		var conn = DI.get(IDatabaseService).acquire();
 		try {
 			var rs = conn.request("SELECT COUNT(*) as count FROM users");
 			var count = rs.hasNext() ? rs.next().count : 0;
-			sidewinder.DI.get(sidewinder.IDatabaseService).release(conn);
+			DI.get(IDatabaseService).release(conn);
 			return count == 0;
 		} catch (e:Dynamic) {
-			sidewinder.DI.get(sidewinder.IDatabaseService).release(conn);
+			DI.get(IDatabaseService).release(conn);
 			return true;
 		}
 	}
 
 	private function getFirstUser():String {
-		var conn = sidewinder.DI.get(sidewinder.IDatabaseService).acquire();
+		var conn = DI.get(IDatabaseService).acquire();
 		try {
 			var rs = conn.request("SELECT id FROM users LIMIT 1");
 			var id = rs.hasNext() ? Std.string(rs.next().id) : "";
-			sidewinder.DI.get(sidewinder.IDatabaseService).release(conn);
+			DI.get(IDatabaseService).release(conn);
 			return id;
 		} catch (e:Dynamic) {
-			sidewinder.DI.get(sidewinder.IDatabaseService).release(conn);
+			DI.get(IDatabaseService).release(conn);
 			return "";
 		}
 	}
@@ -77,14 +79,14 @@ class DatabaseSeeder implements Service {
 	}
 
 	private function shouldSeedPages():Bool {
-		var conn = sidewinder.DI.get(sidewinder.IDatabaseService).acquire();
+		var conn = DI.get(IDatabaseService).acquire();
 		try {
 			var rs = conn.request("SELECT COUNT(*) as count FROM pages");
 			var count = rs.hasNext() ? rs.next().count : 0;
-			sidewinder.DI.get(sidewinder.IDatabaseService).release(conn);
+			DI.get(IDatabaseService).release(conn);
 			return count == 0;
 		} catch (e:Dynamic) {
-			sidewinder.DI.get(sidewinder.IDatabaseService).release(conn);
+			DI.get(IDatabaseService).release(conn);
 			return true;
 		}
 	}

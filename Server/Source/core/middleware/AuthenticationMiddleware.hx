@@ -1,8 +1,8 @@
 package core.middleware;
 
-import sidewinder.App;
-import sidewinder.DI;
-import sidewinder.ICacheService;
+import sidewinder.core.App;
+import sidewinder.core.DI;
+import sidewinder.interfaces.ICacheService;
 import app.services.IAuthService;
 import snake.http.HTTPStatus;
 import haxe.Json;

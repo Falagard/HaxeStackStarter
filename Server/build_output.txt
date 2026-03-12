@@ -1,0 +1,60 @@
+
+_/\\\\\\______________________________________________
+_\////\\\______________________________________________
+_____\/\\\_____/\\\_____________________________________
+______\/\\\____\///_____/\\\\\__/\\\\\_______/\\\\\\\\___
+_______\/\\\_____/\\\__/\\\///\\\\\///\\\___/\\\/////\\\__
+________\/\\\____\/\\\_\/\\\_\//\\\__\/\\\__/\\\\\\\\\\\___
+_________\/\\\____\/\\\_\/\\\__\/\\\__\/\\\_\//\\///////____
+________/\\\\\\\\\_\/\\\_\/\\\__\/\\\__\/\\\__\//\\\\\\\\\\__
+________\/////////__\///__\///___\///___\///____\//////////___
+
+Lime Command-Line Tools (8.3.0)
+
+Initializing project...
+Using project file: C:\Src\ge\HaxeStackStarter\Server/project.xml
+Requesting alternate tools from .haxelib repository...
+
+
+
+_/\\\\\\______________________________________________
+_\////\\\______________________________________________
+_____\/\\\_____/\\\_____________________________________
+______\/\\\____\///_____/\\\\\__/\\\\\_______/\\\\\\\\___
+_______\/\\\_____/\\\__/\\\///\\\\\///\\\___/\\\/////\\\__
+________\/\\\____\/\\\_\/\\\_\//\\\__\/\\\__/\\\\\\\\\\\___
+_________\/\\\____\/\\\_\/\\\__\/\\\__\/\\\_\//\\///////____
+________/\\\\\\\\\_\/\\\_\/\\\__\/\\\__\/\\\__\//\\\\\\\\\\__
+________\/////////__\///__\///___\///___\///____\//////////___
+
+Lime Command-Line Tools (8.3.0)
+
+Initializing project...
+Using project file: C:\Src\ge\HaxeStackStarter\Server/project.xml
+Reading Lime config: C:\Users\Clay\.lime\config.xml
+ - Detected host architecture: X64
+
+Running command: UPDATE
+ - Writing file: Export/hl/bin/manifest/default.json
+
+Running command: BUILD
+ - Copying library file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/ndll/Windows64/lime.hdll -> Export/hl/bin/lime.hdll
+ - Copying library file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/ndll/Windows64/lime.lib -> Export/hl/bin/lime.lib
+ - Running command: haxe Export/hl/haxe/release.hxml
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:23: characters 8-47 : Type not found : hx.well.http.driver.socket.SocketDriver
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:24: characters 8-53 : Type not found : hx.well.http.driver.socket.SocketDriverConfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:25: characters 8-54 : Type not found : hx.well.http.driver.socket.SocketRequestParser
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:26: characters 8-28 : Type not found : hx.well.http.Request
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:30: characters 8-34 : Type not found : hx.well.http.RequestStatic
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:31: characters 8-57 : Type not found : hx.well.http.driver.socket.SocketWebSocketHandler
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:32: characters 8-42 : Type not found : hx.well.websocket.WebSocketSession
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:33: characters 8-50 : Type not found : hx.well.websocket.AbstractWebSocketHandler
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:446: characters 13-29 : Type not found : WebSocketSession
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/core/WebServerFactory.hx:79: lines 79-80 : Void should be sidewinder.interfaces.IWebServer
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:16: characters 8-47 : Type not found : hx.well.http.driver.socket.SocketDriver
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:17: characters 8-54 : Type not found : hx.well.http.driver.socket.SocketRequestParser
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:18: characters 8-46 : Type not found : hx.well.http.driver.socket.SocketInput
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:19: characters 8-57 : Type not found : hx.well.http.driver.socket.SocketWebSocketHandler
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:20: characters 8-34 : Type not found : hx.well.http.RequestStatic
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:147: characters 40-49 : Type not found : HxRequest
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:25: characters 34-46 : Type not found : SocketDriver

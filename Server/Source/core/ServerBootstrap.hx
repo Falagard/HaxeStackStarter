@@ -1,21 +1,21 @@
 package core;
 
-import sidewinder.IWebServer;
-import sidewinder.WebServerFactory;
-import sidewinder.SideWinderRequestHandler;
+import sidewinder.interfaces.IWebServer;
+import sidewinder.core.WebServerFactory;
+import sidewinder.routing.SideWinderRequestHandler;
 import hx.injection.ServiceCollection;
-import sidewinder.DI;
-import sidewinder.HybridLogger;
-import sidewinder.InMemoryCacheService;
-import sidewinder.ICacheService;
+import sidewinder.core.DI;
+import sidewinder.logging.HybridLogger;
+import sidewinder.interfaces.InMemoryCacheService;
+import sidewinder.interfaces.ICacheService;
 // import sidewinder.Database;
-import sidewinder.IDatabaseService;
-import sidewinder.SqliteDatabaseService;
+import sidewinder.interfaces.IDatabaseService;
+import sidewinder.services.SqliteDatabaseService;
 import lime.app.Application;
 import lime.ui.WindowAttributes;
 import lime.ui.Window;
 import sys.net.Host;
-import sidewinder.Router;
+import sidewinder.routing.Router;
 import snake.http.BaseHTTPRequestHandler;
 import hx.injection.ServiceType;
 
@@ -69,9 +69,21 @@ class ServerBootstrap extends Application {
 
 		// Start server
 
-		// Start server
-		httpServer = WebServerFactory.create(sidewinder.WebServerFactory.WebServerType.SnakeServer, config.host, config.port, SideWinderRequestHandler,
-			config.directory);
+		// Create web server using factory pattern
+		// Can switch between SnakeServer, CivetWeb, and HxWell implementations
+		var serverTypeStr = Sys.getEnv("SIDEWINDER_SERVER");
+		var serverType = sidewinder.core.WebServerFactory.WebServerType.HxWell;
+		if (serverTypeStr == "civetweb") {
+			serverType = sidewinder.core.WebServerFactory.WebServerType.CivetWeb;
+		} else if (serverTypeStr == "snake") {
+			serverType = sidewinder.core.WebServerFactory.WebServerType.SnakeServer;
+		}
+
+		var numIslandsStr = Sys.getEnv("SIDEWINDER_ISLANDS");
+		var numIslands = numIslandsStr != null ? Std.parseInt(numIslandsStr) : 4;
+		if (numIslands == null || numIslands < 1) numIslands = 4;
+
+		httpServer = WebServerFactory.create(serverType, config.host, config.port, SideWinderRequestHandler, config.directory, numIslands);
 		httpServer.start();
 	}
 

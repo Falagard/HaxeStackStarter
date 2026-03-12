@@ -2,14 +2,15 @@ package app.services;
 
 import app.models.MegaMenuModels;
 import app.services.IMegaMenuService;
-import sidewinder.IDatabaseService;
-import sidewinder.HybridLogger;
+import sidewinder.interfaces.IDatabaseService;
+import sidewinder.logging.HybridLogger;
+import sidewinder.core.DI;
 
 class MegaMenuService implements IMegaMenuService {
 	var db:IDatabaseService;
 
 	public function new(?db:IDatabaseService) {
-		this.db = db != null ? db : sidewinder.DI.get(IDatabaseService);
+		this.db = db != null ? db : DI.get(IDatabaseService);
 	}
 
 	// ---- Helper to build Map<String,Dynamic> from key-value pairs ----

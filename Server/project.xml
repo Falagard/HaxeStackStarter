@@ -11,6 +11,10 @@
     <haxelib name="SideWinder" />
     <haxelib name="snake-server" />
     <haxelib name="haxe-injection"/>
+    <haxelib name="hxwell" />
+    <haxelib name="json2object" />
+
+    <haxedef name="disable_env" />
 	
 	<assets path="Assets" />
     <assets path="migrations" />

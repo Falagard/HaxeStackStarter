@@ -2,9 +2,9 @@ package app.util;
 
 import app.models.CmsModels;
 // import sidewinder.Database;
-import sidewinder.IDatabaseService;
+import sidewinder.interfaces.IDatabaseService;
 import haxe.Json;
-import sidewinder.DI;
+import sidewinder.core.DI;
 import hx.injection.Service;
 
 class PageLoader implements Service {

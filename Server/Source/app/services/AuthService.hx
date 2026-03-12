@@ -3,9 +3,9 @@ package app.services;
 import app.models.AuthModels;
 import app.services.IAuthService;
 // import sidewinder.Database;
-import sidewinder.IDatabaseService;
-import sidewinder.Router;
-import sidewinder.DI;
+import sidewinder.interfaces.IDatabaseService;
+import sidewinder.routing.Router;
+import sidewinder.core.DI;
 import Date;
 import haxe.crypto.Sha256;
 

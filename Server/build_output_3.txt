@@ -1,0 +1,90 @@
+
+_/\\\\\\______________________________________________
+_\////\\\______________________________________________
+_____\/\\\_____/\\\_____________________________________
+______\/\\\____\///_____/\\\\\__/\\\\\_______/\\\\\\\\___
+_______\/\\\_____/\\\__/\\\///\\\\\///\\\___/\\\/////\\\__
+________\/\\\____\/\\\_\/\\\_\//\\\__\/\\\__/\\\\\\\\\\\___
+_________\/\\\____\/\\\_\/\\\__\/\\\__\/\\\_\//\\///////____
+________/\\\\\\\\\_\/\\\_\/\\\__\/\\\__\/\\\__\//\\\\\\\\\\__
+________\/////////__\///__\///___\///___\///____\//////////___
+
+Lime Command-Line Tools (8.3.0)
+
+Initializing project...
+Using project file: C:\Src\ge\HaxeStackStarter\Server/project.xml
+Requesting alternate tools from .haxelib repository...
+
+
+
+_/\\\\\\______________________________________________
+_\////\\\______________________________________________
+_____\/\\\_____/\\\_____________________________________
+______\/\\\____\///_____/\\\\\__/\\\\\_______/\\\\\\\\___
+_______\/\\\_____/\\\__/\\\///\\\\\///\\\___/\\\/////\\\__
+________\/\\\____\/\\\_\/\\\_\//\\\__\/\\\__/\\\\\\\\\\\___
+_________\/\\\____\/\\\_\/\\\__\/\\\__\/\\\_\//\\///////____
+________/\\\\\\\\\_\/\\\_\/\\\__\/\\\__\/\\\__\//\\\\\\\\\\__
+________\/////////__\///__\///___\///___\///____\//////////___
+
+Lime Command-Line Tools (8.3.0)
+
+Initializing project...
+Using project file: C:\Src\ge\HaxeStackStarter\Server/project.xml
+Reading Lime config: C:\Users\Clay\.lime\config.xml
+ - Detected host architecture: X64
+
+Running command: UPDATE
+ - Writing file: Export/hl/bin/manifest/default.json
+
+Running command: BUILD
+ - Copying library file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/ndll/Windows64/lime.hdll -> Export/hl/bin/lime.hdll
+ - Copying library file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/ndll/Windows64/lime.lib -> Export/hl/bin/lime.lib
+ - Running command: haxe Export/hl/haxe/release.hxml
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/haxe-concurrent/5,1,5/src/hx/concurrent/internal/Macros.hx:35: [INFO] Setting compiler define 'threads'.
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/haxe-concurrent/5,1,5/src/hx/concurrent/internal/Macros.hx:35: [INFO] Setting compiler define 'threads'.
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: sessionconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: providerconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: middlewareconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: instanceconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: httpconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: databaseconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/CommandMacro.hx:9: StartServerCommand
+Reading Lime config: C:\Users\Clay\.lime\config.xml
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/fmt.hdll.hash -> Export/hl/bin/fmt.hdll.hash
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/fmt.lib -> Export/hl/bin/fmt.lib
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/hl.exe -> Export/hl/bin/hl.exe
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/hl.exe.hash -> Export/hl/bin/hl.exe.hash
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/hl.exp -> Export/hl/bin/hl.exp
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/hl.lib -> Export/hl/bin/hl.lib
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/libhl.dll.hash -> Export/hl/bin/libhl.dll.hash
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/libhl.lib -> Export/hl/bin/libhl.lib
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/mysql.hdll.hash -> Export/hl/bin/mysql.hdll.hash
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/mysql.lib -> Export/hl/bin/mysql.lib
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/ssl.hdll.hash -> Export/hl/bin/ssl.hdll.hash
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/ssl.lib -> Export/hl/bin/ssl.lib
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/ui.hdll.hash -> Export/hl/bin/ui.hdll.hash
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/ui.lib -> Export/hl/bin/ui.lib
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/uv.hdll.hash -> Export/hl/bin/uv.hdll.hash
+ - Copying file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/hl/Windows64/uv.lib -> Export/hl/bin/uv.lib
+ - Renaming file: Export/hl/bin/hl.exe -> Export/hl/bin/HaxeStackStarterServer.exe
+ - Deleting file: Export/hl/bin//fmt.hdll.hash
+ - Deleting file: Export/hl/bin//hl.exe.hash
+ - Deleting file: Export/hl/bin//hl.exp
+ - Deleting file: Export/hl/bin//libhl.dll.hash
+ - Deleting file: Export/hl/bin//mysql.hdll.hash
+ - Deleting file: Export/hl/bin//ssl.hdll.hash
+ - Deleting file: Export/hl/bin//ui.hdll.hash
+ - Deleting file: Export/hl/bin//uv.hdll.hash
+ - Copying file: Export/hl/obj/ApplicationMain.hl -> Export/hl/bin/hlboot.dat
+ - Deleting file: Export/hl/bin//fmt.lib
+ - Deleting file: Export/hl/bin//hl.lib
+ - Deleting file: Export/hl/bin//libhl.lib
+ - Deleting file: Export/hl/bin//lime.lib
+ - Deleting file: Export/hl/bin//mysql.lib
+ - Deleting file: Export/hl/bin//ssl.lib
+ - Deleting file: Export/hl/bin//ui.lib
+ - Deleting file: Export/hl/bin//uv.lib
+ - Running command: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/templates/bin/ReplaceVistaIcon.exe Export/hl/bin/HaxeStackStarterServer.exe Export/hl/bin/icon.ico 1
+[copy-server-hdlls.bat] Copying dlls to Export\hl\bin
+[copy-server-hdlls.bat] Copying dlls to Export\hlc\bin

@@ -1,7 +1,7 @@
 package core.middleware;
 
-import sidewinder.App;
-import sidewinder.DI;
+import sidewinder.core.App;
+import sidewinder.core.DI;
 import app.services.ICmsService;
 import snake.http.HTTPStatus;
 

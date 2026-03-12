@@ -1,7 +1,7 @@
 package core.middleware;
 
-import sidewinder.App;
-import sidewinder.HybridLogger;
+import sidewinder.core.App;
+import sidewinder.logging.HybridLogger;
 
 class LoggingMiddleware {
 	public static function use() {

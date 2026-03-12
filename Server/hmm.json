@@ -9,7 +9,7 @@
             "name": "SideWinder",
             "type": "git",
             "dir": null,
-            "ref": "0eb6d92533b00138159ac195e349eb0f1f5baa32",
+            "ref": "fd8c34f7c86f35b1fca36bddeaa13c68ea47524f",
             "url": "https://github.com/Falagard/SideWinder"
         },
         {
@@ -30,6 +30,13 @@
             "dir": null,
             "ref": "fc3a072e6f6e7480a84d674dd1f731b52d9752ac",
             "url": "https://github.com/Falagard/snake-server"
+        },
+        {
+            "name": "hxwell",
+            "type": "git",
+            "dir": null,
+            "ref": "3b83d68d9fff00d1397f1d246aea151cda4957fe",
+            "url": "https://github.com/falagard/hxwell"
         }
     ]
 }
