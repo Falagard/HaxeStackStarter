@@ -939,7 +939,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "80";
+	app.meta.h["build"] = "81";
 	app.meta.h["company"] = "Company Name";
 	app.meta.h["file"] = "Client";
 	app.meta.h["name"] = "Client";
@@ -10284,13 +10284,13 @@ sidewinder_data_CookieJar.prototype = {
 	}
 	,__class__: sidewinder_data_CookieJar
 };
-var sidewinder_IAuthService_$AutoClient_$942935 = function(baseUrl) {
+var sidewinder_IAuthService_$AutoClient_$812358 = function(baseUrl) {
 	this.baseUrl = baseUrl;
 };
-$hxClasses["sidewinder.IAuthService_AutoClient_942935"] = sidewinder_IAuthService_$AutoClient_$942935;
-sidewinder_IAuthService_$AutoClient_$942935.__name__ = "sidewinder.IAuthService_AutoClient_942935";
-sidewinder_IAuthService_$AutoClient_$942935.__interfaces__ = [app_services_IAuthService];
-sidewinder_IAuthService_$AutoClient_$942935.prototype = {
+$hxClasses["sidewinder.IAuthService_AutoClient_812358"] = sidewinder_IAuthService_$AutoClient_$812358;
+sidewinder_IAuthService_$AutoClient_$812358.__name__ = "sidewinder.IAuthService_AutoClient_812358";
+sidewinder_IAuthService_$AutoClient_$812358.__interfaces__ = [app_services_IAuthService];
+sidewinder_IAuthService_$AutoClient_$812358.prototype = {
 	baseUrl: null
 	,doRequest: function(method,path,body) {
 		var fullUrl = this.baseUrl + path;
@@ -10304,7 +10304,7 @@ sidewinder_IAuthService_$AutoClient_$942935.prototype = {
 			h.setHeader("Content-Type","application/json");
 			h.setPostData(jsonBody);
 		}
-		var cookieHeader = sidewinder_IAuthService_$AutoClient_$942935.cookieJar.getCookieHeader(fullUrl);
+		var cookieHeader = sidewinder_IAuthService_$AutoClient_$812358.cookieJar.getCookieHeader(fullUrl);
 		if(cookieHeader != "") {
 			h.setHeader("Cookie",cookieHeader);
 		}
@@ -10330,7 +10330,7 @@ sidewinder_IAuthService_$AutoClient_$942935.prototype = {
 						if(key.toLowerCase() == "set-cookie") {
 							var setCookieValue = headers.h[key];
 							if(setCookieValue != null) {
-								sidewinder_IAuthService_$AutoClient_$942935.cookieJar.setCookie(setCookieValue,fullUrl);
+								sidewinder_IAuthService_$AutoClient_$812358.cookieJar.setCookie(setCookieValue,fullUrl);
 							}
 						}
 					}
@@ -10463,14 +10463,14 @@ sidewinder_IAuthService_$AutoClient_$942935.prototype = {
 	,getConstructorArgs: function() {
 		return ["String"];
 	}
-	,__class__: sidewinder_IAuthService_$AutoClient_$942935
+	,__class__: sidewinder_IAuthService_$AutoClient_$812358
 };
 var app_services_ServiceRegistry = function(baseUrl) {
 	if(StringTools.endsWith(baseUrl,"/")) {
 		baseUrl = HxOverrides.substr(baseUrl,0,baseUrl.length - 1);
 	}
 	this.baseUrl = baseUrl;
-	this.auth = new sidewinder_IAuthService_$AutoClient_$942935(baseUrl);
+	this.auth = new sidewinder_IAuthService_$AutoClient_$812358(baseUrl);
 };
 $hxClasses["app.services.ServiceRegistry"] = app_services_ServiceRegistry;
 app_services_ServiceRegistry.__name__ = "app.services.ServiceRegistry";
@@ -10500,9 +10500,9 @@ app_services_AsyncServiceRegistry.prototype = {
 	,cms: null
 	,megaMenu: null
 	,createClients: function() {
-		this.auth = new sidewinder_IAuthService_$AutoClientAsync_$278855(this.baseUrl,this.cookieJar);
-		this.cms = new sidewinder_ICmsService_$AutoClientAsync_$907758(this.baseUrl,this.cookieJar);
-		this.megaMenu = new sidewinder_IMegaMenuService_$AutoClientAsync_$706204(this.baseUrl,this.cookieJar);
+		this.auth = new sidewinder_IAuthService_$AutoClientAsync_$836777(this.baseUrl,this.cookieJar);
+		this.cms = new sidewinder_ICmsService_$AutoClientAsync_$908129(this.baseUrl,this.cookieJar);
+		this.megaMenu = new sidewinder_IMegaMenuService_$AutoClientAsync_$473953(this.baseUrl,this.cookieJar);
 	}
 	,resetBaseUrl: function(newUrl) {
 		if(newUrl == this.baseUrl) {
@@ -68506,7 +68506,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 372621;
+	this.version = 662952;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -129470,22 +129470,22 @@ openfl_utils__$internal_format_amf3_AMF3Writer.prototype = {
 	}
 	,__class__: openfl_utils__$internal_format_amf3_AMF3Writer
 };
-var sidewinder_IAuthService_$AutoClientAsync_$278855 = function(baseUrl,cookieJar) {
+var sidewinder_IAuthService_$AutoClientAsync_$836777 = function(baseUrl,cookieJar) {
 	this.baseUrl = baseUrl;
 	this.cookieJar = cookieJar;
 };
-$hxClasses["sidewinder.IAuthService_AutoClientAsync_278855"] = sidewinder_IAuthService_$AutoClientAsync_$278855;
-sidewinder_IAuthService_$AutoClientAsync_$278855.__name__ = "sidewinder.IAuthService_AutoClientAsync_278855";
-sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
+$hxClasses["sidewinder.IAuthService_AutoClientAsync_836777"] = sidewinder_IAuthService_$AutoClientAsync_$836777;
+sidewinder_IAuthService_$AutoClientAsync_$836777.__name__ = "sidewinder.IAuthService_AutoClientAsync_836777";
+sidewinder_IAuthService_$AutoClientAsync_$836777.prototype = {
 	baseUrl: null
 	,cookieJar: null
 	,doRequestAsync: function(method,path,body,onData,onError) {
-		haxe_Log.trace("[AutoClientAsync] doRequestAsync begin method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 139, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "doRequestAsync"});
+		haxe_Log.trace("[AutoClientAsync] doRequestAsync begin method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 139, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "doRequestAsync"});
 		var full = this.baseUrl + path;
-		haxe_Log.trace("[AutoClientAsync] full URL=" + full,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 141, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "doRequestAsync"});
+		haxe_Log.trace("[AutoClientAsync] full URL=" + full,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 141, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "doRequestAsync"});
 		var jsonBody = body != null ? JSON.stringify(body) : null;
 		if(jsonBody != null) {
-			haxe_Log.trace("[AutoClientAsync] jsonBody=" + jsonBody,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 144, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "doRequestAsync"});
+			haxe_Log.trace("[AutoClientAsync] jsonBody=" + jsonBody,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 144, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "doRequestAsync"});
 		}
 		var h = new haxe_http_HttpJs(full);
 		h.setHeader("Accept","application/json");
@@ -129501,7 +129501,7 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 				++_g;
 				if(c.name == "session_token") {
 					h.setHeader("Authorization","Bearer " + c.value);
-					haxe_Log.trace("[AutoClientAsync] Added Authorization header from session_token cookie",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 173, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "doRequestAsync"});
+					haxe_Log.trace("[AutoClientAsync] Added Authorization header from session_token cookie",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 173, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "doRequestAsync"});
 				}
 			}
 		}
@@ -129509,7 +129509,7 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 			onError(e);
 		};
 		if(method == "PUT" || method == "DELETE") {
-			haxe_Log.trace("[AutoClientAsync] using XMLHttpRequest for " + method,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 230, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "doRequestAsync"});
+			haxe_Log.trace("[AutoClientAsync] using XMLHttpRequest for " + method,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 230, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "doRequestAsync"});
 			var xhr = new XMLHttpRequest();
 			xhr.open(method,full,true);
 			xhr.withCredentials = true;
@@ -129542,14 +129542,14 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 			} catch( _g ) {
 				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
-				haxe_Log.trace("[AutoClientAsync] XHR error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 259, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "doRequestAsync"});
+				haxe_Log.trace("[AutoClientAsync] XHR error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 259, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "doRequestAsync"});
 				onError(e);
 			}
 		} else {
 			h.onData = function(d) {
 				onData(d);
 			};
-			haxe_Log.trace("[AutoClientAsync] invoking request isPost=" + Std.string(method == "POST"),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 280, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "doRequestAsync"});
+			haxe_Log.trace("[AutoClientAsync] invoking request isPost=" + Std.string(method == "POST"),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 280, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "doRequestAsync"});
 			try {
 				h.request(method == "POST");
 			} catch( _g ) {
@@ -129558,24 +129558,24 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 				onError(e);
 			}
 		}
-		haxe_Log.trace("[AutoClientAsync] doRequestAsync exit method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 286, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "doRequestAsync"});
+		haxe_Log.trace("[AutoClientAsync] doRequestAsync exit method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 286, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "doRequestAsync"});
 	}
 	,registerAsync: function(request,onSuccess,onFailure) {
 		var _p = "/api/auth/register";
 		this.doRequestAsync("POST",_p,request,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "registerAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "registerAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "registerAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "registerAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "registerAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "registerAsync"});
 					onFailure(e);
 				}
 			}
@@ -129587,18 +129587,18 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 		var _p = "/api/auth/login";
 		this.doRequestAsync("POST",_p,request,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "loginAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "loginAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "loginAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "loginAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "loginAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "loginAsync"});
 					onFailure(e);
 				}
 			}
@@ -129610,7 +129610,7 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 		var _p = "/api/auth/logout";
 		this.doRequestAsync("POST",_p,null,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "logoutAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "logoutAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -129620,18 +129620,18 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 		var _p = "/api/auth/me";
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "getCurrentUserAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "getCurrentUserAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "getCurrentUserAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "getCurrentUserAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "getCurrentUserAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "getCurrentUserAsync"});
 					onFailure(e);
 				}
 			}
@@ -129645,18 +129645,18 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 		_p = StringTools.replace(_p,":" + "provider",_provider == null ? "null" : "" + _provider);
 		this.doRequestAsync("POST",_p,request,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "oauthLoginAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "oauthLoginAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "oauthLoginAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "oauthLoginAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "oauthLoginAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "oauthLoginAsync"});
 					onFailure(e);
 				}
 			}
@@ -129670,7 +129670,7 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 		_p = StringTools.replace(_p,":" + "provider",_provider == null ? "null" : "" + _provider);
 		this.doRequestAsync("POST",_p,request,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "linkOAuthProviderAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "linkOAuthProviderAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -129680,7 +129680,7 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 		var _p = "/api/auth/change-password";
 		this.doRequestAsync("POST",_p,request,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "changePasswordAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "changePasswordAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -129690,7 +129690,7 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 		var _p = "/api/auth/reset-password";
 		this.doRequestAsync("POST",_p,email,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "requestPasswordResetAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "requestPasswordResetAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -129700,7 +129700,7 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 		var _p = "/api/auth/verify-email";
 		this.doRequestAsync("POST",_p,code,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "verifyEmailAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "verifyEmailAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -129710,18 +129710,18 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 		var _p = "/api/auth/refresh";
 		this.doRequestAsync("POST",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "refreshSessionAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "refreshSessionAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "refreshSessionAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "refreshSessionAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IAuthService_AutoClientAsync_278855", methodName : "refreshSessionAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IAuthService_AutoClientAsync_836777", methodName : "refreshSessionAsync"});
 					onFailure(e);
 				}
 			}
@@ -129729,24 +129729,24 @@ sidewinder_IAuthService_$AutoClientAsync_$278855.prototype = {
 			onFailure(e);
 		});
 	}
-	,__class__: sidewinder_IAuthService_$AutoClientAsync_$278855
+	,__class__: sidewinder_IAuthService_$AutoClientAsync_$836777
 };
-var sidewinder_ICmsService_$AutoClientAsync_$907758 = function(baseUrl,cookieJar) {
+var sidewinder_ICmsService_$AutoClientAsync_$908129 = function(baseUrl,cookieJar) {
 	this.baseUrl = baseUrl;
 	this.cookieJar = cookieJar;
 };
-$hxClasses["sidewinder.ICmsService_AutoClientAsync_907758"] = sidewinder_ICmsService_$AutoClientAsync_$907758;
-sidewinder_ICmsService_$AutoClientAsync_$907758.__name__ = "sidewinder.ICmsService_AutoClientAsync_907758";
-sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
+$hxClasses["sidewinder.ICmsService_AutoClientAsync_908129"] = sidewinder_ICmsService_$AutoClientAsync_$908129;
+sidewinder_ICmsService_$AutoClientAsync_$908129.__name__ = "sidewinder.ICmsService_AutoClientAsync_908129";
+sidewinder_ICmsService_$AutoClientAsync_$908129.prototype = {
 	baseUrl: null
 	,cookieJar: null
 	,doRequestAsync: function(method,path,body,onData,onError) {
-		haxe_Log.trace("[AutoClientAsync] doRequestAsync begin method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 139, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "doRequestAsync"});
+		haxe_Log.trace("[AutoClientAsync] doRequestAsync begin method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 139, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "doRequestAsync"});
 		var full = this.baseUrl + path;
-		haxe_Log.trace("[AutoClientAsync] full URL=" + full,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 141, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "doRequestAsync"});
+		haxe_Log.trace("[AutoClientAsync] full URL=" + full,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 141, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "doRequestAsync"});
 		var jsonBody = body != null ? JSON.stringify(body) : null;
 		if(jsonBody != null) {
-			haxe_Log.trace("[AutoClientAsync] jsonBody=" + jsonBody,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 144, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "doRequestAsync"});
+			haxe_Log.trace("[AutoClientAsync] jsonBody=" + jsonBody,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 144, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "doRequestAsync"});
 		}
 		var h = new haxe_http_HttpJs(full);
 		h.setHeader("Accept","application/json");
@@ -129762,7 +129762,7 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 				++_g;
 				if(c.name == "session_token") {
 					h.setHeader("Authorization","Bearer " + c.value);
-					haxe_Log.trace("[AutoClientAsync] Added Authorization header from session_token cookie",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 173, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "doRequestAsync"});
+					haxe_Log.trace("[AutoClientAsync] Added Authorization header from session_token cookie",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 173, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "doRequestAsync"});
 				}
 			}
 		}
@@ -129770,7 +129770,7 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 			onError(e);
 		};
 		if(method == "PUT" || method == "DELETE") {
-			haxe_Log.trace("[AutoClientAsync] using XMLHttpRequest for " + method,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 230, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "doRequestAsync"});
+			haxe_Log.trace("[AutoClientAsync] using XMLHttpRequest for " + method,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 230, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "doRequestAsync"});
 			var xhr = new XMLHttpRequest();
 			xhr.open(method,full,true);
 			xhr.withCredentials = true;
@@ -129803,14 +129803,14 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 			} catch( _g ) {
 				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
-				haxe_Log.trace("[AutoClientAsync] XHR error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 259, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "doRequestAsync"});
+				haxe_Log.trace("[AutoClientAsync] XHR error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 259, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "doRequestAsync"});
 				onError(e);
 			}
 		} else {
 			h.onData = function(d) {
 				onData(d);
 			};
-			haxe_Log.trace("[AutoClientAsync] invoking request isPost=" + Std.string(method == "POST"),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 280, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "doRequestAsync"});
+			haxe_Log.trace("[AutoClientAsync] invoking request isPost=" + Std.string(method == "POST"),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 280, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "doRequestAsync"});
 			try {
 				h.request(method == "POST");
 			} catch( _g ) {
@@ -129819,7 +129819,7 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 				onError(e);
 			}
 		}
-		haxe_Log.trace("[AutoClientAsync] doRequestAsync exit method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 286, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "doRequestAsync"});
+		haxe_Log.trace("[AutoClientAsync] doRequestAsync exit method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 286, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "doRequestAsync"});
 	}
 	,getPageAsync: function(_id,onSuccess,onFailure) {
 		var _p = "/pub/cms/page/:id";
@@ -129827,18 +129827,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getPageAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getPageAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getPageAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getPageAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getPageAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getPageAsync"});
 					onFailure(e);
 				}
 			}
@@ -129852,18 +129852,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		_p = StringTools.replace(_p,":" + "slug",_slug == null ? "null" : "" + _slug);
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getPageBySlugAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getPageBySlugAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getPageBySlugAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getPageBySlugAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getPageBySlugAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getPageBySlugAsync"});
 					onFailure(e);
 				}
 			}
@@ -129875,18 +129875,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		var _p = "/api/cms/page";
 		this.doRequestAsync("POST",_p,request,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "createPageAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "createPageAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "createPageAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "createPageAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "createPageAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "createPageAsync"});
 					onFailure(e);
 				}
 			}
@@ -129900,18 +129900,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("PUT",_p,request,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "updatePageAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "updatePageAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "updatePageAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "updatePageAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "updatePageAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "updatePageAsync"});
 					onFailure(e);
 				}
 			}
@@ -129923,18 +129923,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		var _p = "/api/cms/pages";
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "listPagesAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "listPagesAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "listPagesAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "listPagesAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "listPagesAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "listPagesAsync"});
 					onFailure(e);
 				}
 			}
@@ -129950,18 +129950,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		_p = StringTools.replace(_p,":" + "versionId",_versionId == null ? "null" : "" + _versionId);
 		this.doRequestAsync("POST",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "publishVersionAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "publishVersionAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "publishVersionAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "publishVersionAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "publishVersionAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "publishVersionAsync"});
 					onFailure(e);
 				}
 			}
@@ -129975,18 +129975,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		_p = StringTools.replace(_p,":" + "versionId",_versionId == null ? "null" : "" + _versionId);
 		this.doRequestAsync("POST",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "restoreVersionAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "restoreVersionAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "restoreVersionAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "restoreVersionAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "restoreVersionAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "restoreVersionAsync"});
 					onFailure(e);
 				}
 			}
@@ -130000,18 +130000,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		_p = StringTools.replace(_p,":" + "pageId",_pageId == null ? "null" : "" + _pageId);
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "listVersionsAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "listVersionsAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "listVersionsAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "listVersionsAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "listVersionsAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "listVersionsAsync"});
 					onFailure(e);
 				}
 			}
@@ -130023,18 +130023,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		var _p = "/api/cms/asset";
 		this.doRequestAsync("POST",_p,request,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "uploadAssetAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "uploadAssetAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "uploadAssetAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "uploadAssetAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "uploadAssetAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "uploadAssetAsync"});
 					onFailure(e);
 				}
 			}
@@ -130048,18 +130048,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		_p = StringTools.replace(_p,":" + "assetId",_assetId == null ? "null" : "" + _assetId);
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getAssetAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getAssetAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getAssetAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getAssetAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getAssetAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getAssetAsync"});
 					onFailure(e);
 				}
 			}
@@ -130073,18 +130073,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		_p = StringTools.replace(_p,":" + "pageId",_pageId == null ? "null" : "" + _pageId);
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "listAssetsAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "listAssetsAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "listAssetsAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "listAssetsAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "listAssetsAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "listAssetsAsync"});
 					onFailure(e);
 				}
 			}
@@ -130096,18 +130096,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		var _p = "/api/cms/validate";
 		this.doRequestAsync("POST",_p,json,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "validateComponentsAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "validateComponentsAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "validateComponentsAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "validateComponentsAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "validateComponentsAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "validateComponentsAsync"});
 					onFailure(e);
 				}
 			}
@@ -130119,18 +130119,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		var _p = "/api/cms/ai-prompt";
 		this.doRequestAsync("POST",_p,prompt,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "generateAiPromptAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "generateAiPromptAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "generateAiPromptAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "generateAiPromptAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "generateAiPromptAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "generateAiPromptAsync"});
 					onFailure(e);
 				}
 			}
@@ -130142,18 +130142,18 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 		var _p = "/api/cms/component-types";
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getComponentTypesAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getComponentTypesAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getComponentTypesAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getComponentTypesAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_907758", methodName : "getComponentTypesAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.ICmsService_AutoClientAsync_908129", methodName : "getComponentTypesAsync"});
 					onFailure(e);
 				}
 			}
@@ -130161,24 +130161,24 @@ sidewinder_ICmsService_$AutoClientAsync_$907758.prototype = {
 			onFailure(e);
 		});
 	}
-	,__class__: sidewinder_ICmsService_$AutoClientAsync_$907758
+	,__class__: sidewinder_ICmsService_$AutoClientAsync_$908129
 };
-var sidewinder_IMegaMenuService_$AutoClientAsync_$706204 = function(baseUrl,cookieJar) {
+var sidewinder_IMegaMenuService_$AutoClientAsync_$473953 = function(baseUrl,cookieJar) {
 	this.baseUrl = baseUrl;
 	this.cookieJar = cookieJar;
 };
-$hxClasses["sidewinder.IMegaMenuService_AutoClientAsync_706204"] = sidewinder_IMegaMenuService_$AutoClientAsync_$706204;
-sidewinder_IMegaMenuService_$AutoClientAsync_$706204.__name__ = "sidewinder.IMegaMenuService_AutoClientAsync_706204";
-sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
+$hxClasses["sidewinder.IMegaMenuService_AutoClientAsync_473953"] = sidewinder_IMegaMenuService_$AutoClientAsync_$473953;
+sidewinder_IMegaMenuService_$AutoClientAsync_$473953.__name__ = "sidewinder.IMegaMenuService_AutoClientAsync_473953";
+sidewinder_IMegaMenuService_$AutoClientAsync_$473953.prototype = {
 	baseUrl: null
 	,cookieJar: null
 	,doRequestAsync: function(method,path,body,onData,onError) {
-		haxe_Log.trace("[AutoClientAsync] doRequestAsync begin method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 139, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "doRequestAsync"});
+		haxe_Log.trace("[AutoClientAsync] doRequestAsync begin method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 139, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "doRequestAsync"});
 		var full = this.baseUrl + path;
-		haxe_Log.trace("[AutoClientAsync] full URL=" + full,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 141, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "doRequestAsync"});
+		haxe_Log.trace("[AutoClientAsync] full URL=" + full,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 141, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "doRequestAsync"});
 		var jsonBody = body != null ? JSON.stringify(body) : null;
 		if(jsonBody != null) {
-			haxe_Log.trace("[AutoClientAsync] jsonBody=" + jsonBody,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 144, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "doRequestAsync"});
+			haxe_Log.trace("[AutoClientAsync] jsonBody=" + jsonBody,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 144, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "doRequestAsync"});
 		}
 		var h = new haxe_http_HttpJs(full);
 		h.setHeader("Accept","application/json");
@@ -130194,7 +130194,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 				++_g;
 				if(c.name == "session_token") {
 					h.setHeader("Authorization","Bearer " + c.value);
-					haxe_Log.trace("[AutoClientAsync] Added Authorization header from session_token cookie",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 173, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "doRequestAsync"});
+					haxe_Log.trace("[AutoClientAsync] Added Authorization header from session_token cookie",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 173, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "doRequestAsync"});
 				}
 			}
 		}
@@ -130202,7 +130202,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 			onError(e);
 		};
 		if(method == "PUT" || method == "DELETE") {
-			haxe_Log.trace("[AutoClientAsync] using XMLHttpRequest for " + method,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 230, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "doRequestAsync"});
+			haxe_Log.trace("[AutoClientAsync] using XMLHttpRequest for " + method,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 230, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "doRequestAsync"});
 			var xhr = new XMLHttpRequest();
 			xhr.open(method,full,true);
 			xhr.withCredentials = true;
@@ -130235,14 +130235,14 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 			} catch( _g ) {
 				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
-				haxe_Log.trace("[AutoClientAsync] XHR error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 259, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "doRequestAsync"});
+				haxe_Log.trace("[AutoClientAsync] XHR error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 259, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "doRequestAsync"});
 				onError(e);
 			}
 		} else {
 			h.onData = function(d) {
 				onData(d);
 			};
-			haxe_Log.trace("[AutoClientAsync] invoking request isPost=" + Std.string(method == "POST"),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 280, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "doRequestAsync"});
+			haxe_Log.trace("[AutoClientAsync] invoking request isPost=" + Std.string(method == "POST"),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 280, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "doRequestAsync"});
 			try {
 				h.request(method == "POST");
 			} catch( _g ) {
@@ -130251,24 +130251,24 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 				onError(e);
 			}
 		}
-		haxe_Log.trace("[AutoClientAsync] doRequestAsync exit method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 286, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "doRequestAsync"});
+		haxe_Log.trace("[AutoClientAsync] doRequestAsync exit method=" + method + " path=" + path,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 286, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "doRequestAsync"});
 	}
 	,listMenusAsync: function(onSuccess,onFailure) {
 		var _p = "/pub/menus";
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listMenusAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listMenusAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listMenusAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listMenusAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listMenusAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listMenusAsync"});
 					onFailure(e);
 				}
 			}
@@ -130282,18 +130282,18 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "getMenuAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "getMenuAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "getMenuAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "getMenuAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "getMenuAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "getMenuAsync"});
 					onFailure(e);
 				}
 			}
@@ -130304,7 +130304,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 	,createMenuAsync: function(menu,onSuccess,onFailure) {
 		var _p = "/api/menu";
 		this.doRequestAsync("POST",_p,menu,function(d) {
-			haxe_Log.trace("[AutoClientAsync] parse Int raw=" + d,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 373, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "createMenuAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Int raw=" + d,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 373, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "createMenuAsync"});
 			var parsed = Std.parseInt(d);
 			onSuccess(parsed == null ? 0 : parsed);
 		},function(e) {
@@ -130317,7 +130317,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("PUT",_p,menu,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "updateMenuAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "updateMenuAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -130329,7 +130329,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("DELETE",_p,null,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "deleteMenuAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "deleteMenuAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -130341,18 +130341,18 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "menuId",_menuId == null ? "null" : "" + _menuId);
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listSectionsAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listSectionsAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listSectionsAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listSectionsAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listSectionsAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listSectionsAsync"});
 					onFailure(e);
 				}
 			}
@@ -130365,7 +130365,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":*" + "menuId",_menuId == null ? "null" : "" + _menuId);
 		_p = StringTools.replace(_p,":" + "menuId",_menuId == null ? "null" : "" + _menuId);
 		this.doRequestAsync("POST",_p,section,function(d) {
-			haxe_Log.trace("[AutoClientAsync] parse Int raw=" + d,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 373, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "createSectionAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Int raw=" + d,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 373, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "createSectionAsync"});
 			var parsed = Std.parseInt(d);
 			onSuccess(parsed == null ? 0 : parsed);
 		},function(e) {
@@ -130378,7 +130378,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("PUT",_p,section,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "updateSectionAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "updateSectionAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -130390,7 +130390,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("DELETE",_p,null,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "deleteSectionAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "deleteSectionAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -130402,18 +130402,18 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "sectionId",_sectionId == null ? "null" : "" + _sectionId);
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listItemsAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listItemsAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listItemsAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listItemsAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listItemsAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listItemsAsync"});
 					onFailure(e);
 				}
 			}
@@ -130426,7 +130426,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":*" + "sectionId",_sectionId == null ? "null" : "" + _sectionId);
 		_p = StringTools.replace(_p,":" + "sectionId",_sectionId == null ? "null" : "" + _sectionId);
 		this.doRequestAsync("POST",_p,item,function(d) {
-			haxe_Log.trace("[AutoClientAsync] parse Int raw=" + d,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 373, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "createItemAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Int raw=" + d,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 373, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "createItemAsync"});
 			var parsed = Std.parseInt(d);
 			onSuccess(parsed == null ? 0 : parsed);
 		},function(e) {
@@ -130439,7 +130439,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("PUT",_p,item,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "updateItemAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "updateItemAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -130451,7 +130451,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("DELETE",_p,null,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "deleteItemAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "deleteItemAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -130463,18 +130463,18 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "itemId",_itemId == null ? "null" : "" + _itemId);
 		this.doRequestAsync("GET",_p,null,function(d) {
 			if(d == null || d == "") {
-				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listMetadataAsync"});
+				haxe_Log.trace("[AutoClientAsync] empty JSON body",{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 390, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listMetadataAsync"});
 				onSuccess(null);
 			} else {
 				try {
-					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listMetadataAsync"});
+					haxe_Log.trace("[AutoClientAsync] parsing JSON length=" + d.length,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 394, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listMetadataAsync"});
 					var raw = JSON.parse(d);
 					var converted = sidewinder_client_AutoClientAsync.normalizeDates(raw);
 					onSuccess(converted);
 				} catch( _g ) {
 					haxe_NativeStackTrace.lastError = _g;
 					var e = haxe_Exception.caught(_g).unwrap();
-					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "listMetadataAsync"});
+					haxe_Log.trace("[AutoClientAsync] JSON parse error " + Std.string(e),{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 399, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "listMetadataAsync"});
 					onFailure(e);
 				}
 			}
@@ -130487,7 +130487,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":*" + "itemId",_itemId == null ? "null" : "" + _itemId);
 		_p = StringTools.replace(_p,":" + "itemId",_itemId == null ? "null" : "" + _itemId);
 		this.doRequestAsync("POST",_p,metadata,function(d) {
-			haxe_Log.trace("[AutoClientAsync] parse Int raw=" + d,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 373, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "createMetadataAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Int raw=" + d,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 373, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "createMetadataAsync"});
 			var parsed = Std.parseInt(d);
 			onSuccess(parsed == null ? 0 : parsed);
 		},function(e) {
@@ -130500,7 +130500,7 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("PUT",_p,metadata,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "updateMetadataAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "updateMetadataAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
@@ -130512,13 +130512,13 @@ sidewinder_IMegaMenuService_$AutoClientAsync_$706204.prototype = {
 		_p = StringTools.replace(_p,":" + "id",_id == null ? "null" : "" + _id);
 		this.doRequestAsync("DELETE",_p,null,function(d) {
 			var s = d;
-			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_706204", methodName : "deleteMetadataAsync"});
+			haxe_Log.trace("[AutoClientAsync] parse Bool raw=" + s,{ fileName : "sidewinder/client/AutoClientAsync.hx", lineNumber : 382, className : "sidewinder.IMegaMenuService_AutoClientAsync_473953", methodName : "deleteMetadataAsync"});
 			onSuccess(s == "true" || s == "1");
 		},function(e) {
 			onFailure(e);
 		});
 	}
-	,__class__: sidewinder_IMegaMenuService_$AutoClientAsync_$706204
+	,__class__: sidewinder_IMegaMenuService_$AutoClientAsync_$473953
 };
 var sidewinder_client_AutoClient = function() { };
 $hxClasses["sidewinder.client.AutoClient"] = sidewinder_client_AutoClient;
@@ -130873,7 +130873,7 @@ haxe_ui_backend_ComponentImpl.elementToComponent = new haxe_ds_ObjectMap();
 haxe_ui_backend_ComponentImpl._stylesAdded = false;
 haxe_ui_core_Component.__meta__ = { fields : { styleNames : { clonable : null}, styleString : { clonable : null}}};
 app_services_IAuthService.__meta__ = { fields : { register : { post : ["/api/auth/register"]}, login : { post : ["/api/auth/login"]}, logout : { post : ["/api/auth/logout"]}, getCurrentUser : { get : ["/api/auth/me"]}, oauthLogin : { post : ["/api/auth/oauth/:provider"]}, linkOAuthProvider : { post : ["/api/auth/link-oauth/:provider"]}, changePassword : { post : ["/api/auth/change-password"]}, requestPasswordReset : { post : ["/api/auth/reset-password"]}, verifyEmail : { post : ["/api/auth/verify-email"]}, refreshSession : { post : ["/api/auth/refresh"]}}};
-sidewinder_IAuthService_$AutoClient_$942935.cookieJar = new sidewinder_data_CookieJar();
+sidewinder_IAuthService_$AutoClient_$812358.cookieJar = new sidewinder_data_CookieJar();
 app_services_ServiceRegistry.instance = new app_services_ServiceRegistry(app_services_ServiceRegistry.determineDefaultBase());
 app_services_AsyncServiceRegistry.instance = new app_services_AsyncServiceRegistry(app_services_ServiceRegistry.instance.baseUrl);
 app_services_ICmsService.__meta__ = { fields : { getPage : { get : ["/pub/cms/page/:id"]}, getPageBySlug : { get : ["/pub/cms/page/slug/:*slug"]}, createPage : { post : ["/api/cms/page"], requiresAuth : null}, updatePage : { put : ["/api/cms/page/:id"], requiresAuth : null}, listPages : { get : ["/api/cms/pages"], requiresAuth : null}, publishVersion : { post : ["/api/cms/page/:pageId/version/:versionId/publish"], requiresAuth : null}, restoreVersion : { post : ["/api/cms/version/:versionId/restore"], requiresAuth : null}, listVersions : { get : ["/api/cms/page/:pageId/versions"], requiresAuth : null}, uploadAsset : { post : ["/api/cms/asset"], requiresAuth : null}, getAsset : { get : ["/api/cms/asset/:assetId"], requiresAuth : null}, listAssets : { get : ["/api/cms/page/:pageId/assets"], requiresAuth : null}, validateComponents : { post : ["/api/cms/validate"], requiresAuth : null}, generateAiPrompt : { post : ["/api/cms/ai-prompt"], requiresAuth : null}, getComponentTypes : { get : ["/api/cms/component-types"], requiresAuth : null}}};

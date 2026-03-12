@@ -224,7 +224,7 @@ class PageNavigator {
 	}
 	function encodeURIComponent(s:String):String {
 		#if html5
-		return untyped __js__("encodeURIComponent")(s);
+		return js.Syntax.code("encodeURIComponent({0})", s);
 		#else
 		return StringTools.urlEncode(s);
 		#end
@@ -232,7 +232,7 @@ class PageNavigator {
 
 	function decodeURIComponent(s:String):String {
 		#if html5
-		return untyped __js__("decodeURIComponent")(s);
+		return js.Syntax.code("decodeURIComponent({0})", s);
 		#else
 		return StringTools.urlDecode(s);
 		#end
