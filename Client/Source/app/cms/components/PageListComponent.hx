@@ -11,7 +11,7 @@ import haxe.ui.components.TextField;
 import haxe.ui.components.Spacer;
 import haxe.ui.data.ArrayDataSource;
 import app.cms.ICmsManager;
-import sidewinder.DI;
+import sidewinder.core.DI;
 import app.cms.PageEditor;
 import app.models.CmsModels;
 

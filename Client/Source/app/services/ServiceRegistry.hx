@@ -1,6 +1,6 @@
 package app.services;
 
-import sidewinder.AutoClient;
+import sidewinder.client.AutoClient;
 import app.services.IAuthService;
 import core.util.BuildConfig;
 

@@ -142,7 +142,7 @@ class PageNavigator {
 		var url = '#' + pageId;
 		if (anchor != null && anchor != "")
 			url += ':' + anchor;
-		if (queryParams != null && !queryParams.isEmpty()) {
+		if (queryParams != null && queryParams.iterator().hasNext()) {
 			var first = true;
 			for (k in queryParams.keys()) {
 				url += first ? '?' : '&';
@@ -213,10 +213,28 @@ class PageNavigator {
 	function mapEquals(a:Map<String, String>, b:Map<String, String>):Bool {
 		if (a == null && b == null) return true;
 		if (a == null || b == null) return false;
-		if (a.keys().length != b.keys().length) return false;
+		var countA = 0;
 		for (k in a.keys()) {
+			countA++;
 			if (!b.exists(k) || a.get(k) != b.get(k)) return false;
 		}
-		return true;
+		var countB = 0;
+		for (k in b.keys()) countB++;
+		return countA == countB;
+	}
+	function encodeURIComponent(s:String):String {
+		#if html5
+		return untyped __js__("encodeURIComponent")(s);
+		#else
+		return StringTools.urlEncode(s);
+		#end
+	}
+
+	function decodeURIComponent(s:String):String {
+		#if html5
+		return untyped __js__("decodeURIComponent")(s);
+		#else
+		return StringTools.urlDecode(s);
+		#end
 	}
 }

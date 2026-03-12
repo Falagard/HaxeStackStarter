@@ -1,7 +1,7 @@
 package app.cms;
 
 import haxe.ui.containers.dialogs.Dialog;
-import sidewinder.DI;
+import sidewinder.core.DI;
 import haxe.ui.containers.VBox;
 import haxe.ui.containers.HBox;
 import haxe.ui.components.Button;

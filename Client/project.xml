@@ -5,6 +5,7 @@
 	<app main="app.Main" path="Export" file="Client" />
 
 	<source path="Source" />
+    <source path="Source/core" />
     <source path="../Shared" />
 	
 	<haxelib name="haxeui-openfl" unless="html5" />

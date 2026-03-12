@@ -10,7 +10,7 @@ import haxe.ui.data.ArrayDataSource;
 import app.models.MegaMenuModels;
 import app.services.IMegaMenuService;
 import app.cms.ICmsManager;
-import sidewinder.DI;
+import sidewinder.core.DI;
 
 /** Menu list component for displaying a selected menu on a page */
 class MenuListComponent extends BaseComponent {

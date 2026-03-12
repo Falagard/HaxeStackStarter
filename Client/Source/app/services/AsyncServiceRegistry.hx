@@ -1,11 +1,11 @@
 package app.services;
 
-import sidewinder.AutoClientAsync;
+import sidewinder.client.AutoClientAsync;
 import app.services.IAuthService;
 import app.services.ICmsService;
 import app.services.IMegaMenuService;
-import sidewinder.ICookieJar;
-import sidewinder.CookieJar;
+import sidewinder.interfaces.ICookieJar;
+import sidewinder.data.CookieJar;
 
 /**
  * Holds async (callback-based) service clients generated via AutoClientAsync.
@@ -16,11 +16,11 @@ class AsyncServiceRegistry {
 	public static var instance(default, null):AsyncServiceRegistry = new AsyncServiceRegistry(ServiceRegistry.instance.baseUrl);
 
 	public var baseUrl(default, null):String;
-	public var cookieJar(default, null):ICookieJar;
+	public var cookieJar(default, null):sidewinder.interfaces.ICookieJar;
 
-	public var auth:IAuthServiceAsync; // authentication service
-	public var cms:ICmsServiceAsync; // CMS service
-	public var megaMenu:IMegaMenuServiceAsync; // MegaMenu service
+	public var auth:Dynamic; // authentication service
+	public var cms:Dynamic; // CMS service
+	public var megaMenu:Dynamic; // MegaMenu service
 
 	public function new(baseUrl:String) {
 		this.baseUrl = baseUrl;

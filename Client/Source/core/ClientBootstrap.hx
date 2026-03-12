@@ -2,7 +2,7 @@ package core;
 
 import haxe.ui.Toolkit;
 import haxe.ui.core.Component;
-import sidewinder.DI;
+import sidewinder.core.DI;
 import hx.injection.ServiceCollection;
 
 class ClientBootstrap {

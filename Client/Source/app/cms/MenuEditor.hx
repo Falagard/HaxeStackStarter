@@ -6,7 +6,7 @@ import haxe.ui.containers.HBox;
 import haxe.ui.components.Button;
 import haxe.ui.components.Label;
 import haxe.ui.components.TextField;
-import sidewinder.DI;
+import sidewinder.core.DI;
 import app.cms.ICmsManager;
 import app.models.MegaMenuModels;
 

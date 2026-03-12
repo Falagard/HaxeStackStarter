@@ -10,7 +10,7 @@ import haxe.ui.components.Label;
 import app.state.AppState;
 import app.components.Notifications;
 import app.cms.ICmsManager;
-import sidewinder.DI;
+import sidewinder.core.DI;
 import app.models.CmsModels;
 import app.cms.components.PageListComponent;
 import app.cms.components.MenuListComponent;

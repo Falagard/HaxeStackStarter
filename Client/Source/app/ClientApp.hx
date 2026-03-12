@@ -3,7 +3,7 @@ package app;
 import core.ClientBootstrap;
 import haxe.ui.core.Component;
 import app.views.MainView;
-import sidewinder.DI;
+import sidewinder.core.DI;
 import hx.injection.ServiceCollection;
 import app.cms.ICmsManager;
 import app.cms.CmsManager;
