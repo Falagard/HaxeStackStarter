@@ -57,21 +57,17 @@ class ServerBootstrap extends Application {
 			c.addService(ServiceType.Singleton, IDatabaseService, SqliteDatabaseService);
 			configureServices(c);
 		});
-
-		cache = DI.get(ICacheService);
-
 		// Run migrations
 		var db = DI.get(IDatabaseService);
 		db.runMigrations();
+
+		afterMigrations();
 
 		// Configure generic middleware/routes
 		configureMiddleware();
 		configureRoutes(router);
 
 		// Start server
-
-		// Create web server using factory pattern
-		// Can switch between SnakeServer, CivetWeb, and HxWell implementations
 		var serverTypeStr = Sys.getEnv("SIDEWINDER_SERVER");
 		var serverType = sidewinder.core.WebServerFactory.WebServerType.HxWell;
 		if (serverTypeStr == "civetweb") {
@@ -91,6 +87,10 @@ class ServerBootstrap extends Application {
 
 	public function configureServices(services:ServiceCollection):Void {
 		// Override in subclass to register app services
+	}
+
+	public function afterMigrations():Void {
+		// Override in subclass to run seeding, etc.
 	}
 
 	public function configureMiddleware():Void {

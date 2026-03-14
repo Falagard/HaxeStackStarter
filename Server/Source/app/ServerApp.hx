@@ -24,6 +24,17 @@ import app.util.VersionRestorer;
 import app.services.DatabaseSeeder;
 
 class ServerApp extends ServerBootstrap {
+	public function minimalInitForSeeding():Void {
+		trace("ServerApp.minimalInitForSeeding() starting...");
+		DI.init(c -> {
+			c.addService(ServiceType.Singleton, sidewinder.interfaces.ICacheService, sidewinder.interfaces.InMemoryCacheService);
+			c.addService(ServiceType.Singleton, sidewinder.interfaces.IDatabaseService, sidewinder.services.SqliteDatabaseService);
+			configureServices(c);
+		});
+		var db = DI.get(sidewinder.interfaces.IDatabaseService);
+		db.runMigrations();
+	}
+
 	override public function configure():Void {
 		super.configure();
 		var staticDir = "static";
@@ -52,13 +63,30 @@ class ServerApp extends ServerBootstrap {
 		services.addService(ServiceType.Scoped, PageLoader, PageLoader);
 		services.addService(ServiceType.Scoped, PageSerializer, PageSerializer);
 		services.addService(ServiceType.Scoped, VersionRestorer, VersionRestorer);
-		services.addService(ServiceType.Scoped, DatabaseSeeder, DatabaseSeeder);
+		services.addService(ServiceType.Singleton, DatabaseSeeder, DatabaseSeeder);
+	}
+
+	override public function afterMigrations():Void {
+		// During startup, we can't use DI to get Scoped services (AuthService, CmsService, etc)
+		// because there is no active request scope. We manually instantiate them here for seeding.
+		try {
+			var db = DI.get(sidewinder.interfaces.IDatabaseService);
+			var auth = new app.services.AuthService(db);
+			var cms = new app.services.CmsService(db);
+			var megaMenu = new app.services.MegaMenuService(db);
+			
+			var seeder = new app.services.DatabaseSeeder(cms, megaMenu, auth);
+			seeder.seed();
+		} catch (e:Dynamic) {
+			trace("ServerApp.afterMigrations() ERROR during seeding: " + e);
+			#if hl
+			trace(haxe.CallStack.toString(haxe.CallStack.exceptionStack()));
+			#end
+		}
 	}
 
 	override public function init():Void {
 		super.init();
-		var seeder = DI.get(DatabaseSeeder);
-		seeder.seed();
 	}
 
 	override public function configureMiddleware():Void {

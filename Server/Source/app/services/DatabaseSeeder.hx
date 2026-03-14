@@ -17,22 +17,40 @@ class DatabaseSeeder implements Service {
 	var auth:IAuthService;
 
 	public function new(?cms:ICmsService, ?megaMenu:IMegaMenuService, ?auth:IAuthService) {
-		this.cms = cms != null ? cms : DI.get(ICmsService);
-		this.megaMenu = megaMenu != null ? megaMenu : DI.get(IMegaMenuService);
-		this.auth = auth != null ? auth : DI.get(IAuthService);
+		this.cms = cms;
+		this.megaMenu = megaMenu;
+		this.auth = auth;
+	}
+
+	private function ensureDependencies():Void {
+		if (this.cms == null) this.cms = DI.get(ICmsService);
+		if (this.megaMenu == null) this.megaMenu = DI.get(IMegaMenuService);
+		if (this.auth == null) this.auth = DI.get(IAuthService);
+	}
+
+	public static function runSeed():Void {
+		var db = DI.get(sidewinder.interfaces.IDatabaseService);
+		var auth = new AuthService(db);
+		var cms = new CmsService(db);
+		var megaMenu = new MegaMenuService(db);
+		var seeder = new DatabaseSeeder(cms, megaMenu, auth);
+		seeder.seed();
 	}
 
 	public function seed():Void {
+		ensureDependencies();
 		HybridLogger.info("DatabaseSeeder.seed() called");
 		var userId:String = "";
-		if (shouldSeedUsers()) {
+		var needsUserSeed = shouldSeedUsers();
+		if (needsUserSeed) {
 			userId = seedUsers();
 		} else {
 			userId = getFirstUser();
 		}
 
 		if (userId != "" && userId != null) {
-			if (shouldSeedPages()) {
+			var needsPageSeed = shouldSeedPages();
+			if (needsPageSeed) {
 				seedPages(userId);
 			}
 			seedMegaMenus();
@@ -66,12 +84,14 @@ class DatabaseSeeder implements Service {
 	}
 
 	private function seedUsers():String {
+		trace("DatabaseSeeder.seedUsers() started");
 		var request:RegisterRequest = {
 			email: "admin@example.com",
 			password: "SideWinder2024!",
 			username: "Admin User"
 		};
 		var response = auth.register(request);
+		trace("DatabaseSeeder.seedUsers() auth.register response: " + haxe.Json.stringify(response));
 		if (response.success && response.user != null) {
 			return response.user.id;
 		}

@@ -70,7 +70,8 @@ class AuthService implements IAuthService {
 			conn.request(db.buildSql(sql, params));
 			db.release(conn);
 		} catch (e:Dynamic) {
-			return {success: false, error: "Failed to create user"};
+			trace("AuthService.register() DB Error inserting user: " + e);
+			return {success: false, error: "Failed to create user: " + e};
 		}
 
 		var user = getUserById(userId);
