@@ -18,6 +18,7 @@ import sys.net.Host;
 import sidewinder.routing.Router;
 import snake.http.BaseHTTPRequestHandler;
 import hx.injection.ServiceType;
+import sidewinder.interfaces.IslandManager;
 
 class ServerBootstrap extends Application {
 	public var config:ServerConfig;
@@ -83,7 +84,8 @@ class ServerBootstrap extends Application {
 		var numIslands = numIslandsStr != null ? Std.parseInt(numIslandsStr) : 4;
 		if (numIslands == null || numIslands < 1) numIslands = 4;
 
-		httpServer = WebServerFactory.create(serverType, config.host, config.port, SideWinderRequestHandler, config.directory, numIslands);
+		var islandManager = new IslandManager(numIslands);
+		httpServer = WebServerFactory.create(serverType, config.host, config.port, SideWinderRequestHandler, config.directory, islandManager);
 		httpServer.start();
 	}
 

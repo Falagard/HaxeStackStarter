@@ -1,60 +1,135 @@
-
-_/\\\\\\______________________________________________
-_\////\\\______________________________________________
-_____\/\\\_____/\\\_____________________________________
-______\/\\\____\///_____/\\\\\__/\\\\\_______/\\\\\\\\___
-_______\/\\\_____/\\\__/\\\///\\\\\///\\\___/\\\/////\\\__
-________\/\\\____\/\\\_\/\\\_\//\\\__\/\\\__/\\\\\\\\\\\___
-_________\/\\\____\/\\\_\/\\\__\/\\\__\/\\\_\//\\///////____
-________/\\\\\\\\\_\/\\\_\/\\\__\/\\\__\/\\\__\//\\\\\\\\\\__
-________\/////////__\///__\///___\///___\///____\//////////___
-
-Lime Command-Line Tools (8.3.0)
-
-Initializing project...
-Using project file: C:\Src\ge\HaxeStackStarter\Server/project.xml
-Requesting alternate tools from .haxelib repository...
-
-
-
-_/\\\\\\______________________________________________
-_\////\\\______________________________________________
-_____\/\\\_____/\\\_____________________________________
-______\/\\\____\///_____/\\\\\__/\\\\\_______/\\\\\\\\___
-_______\/\\\_____/\\\__/\\\///\\\\\///\\\___/\\\/////\\\__
-________\/\\\____\/\\\_\/\\\_\//\\\__\/\\\__/\\\\\\\\\\\___
-_________\/\\\____\/\\\_\/\\\__\/\\\__\/\\\_\//\\///////____
-________/\\\\\\\\\_\/\\\_\/\\\__\/\\\__\/\\\__\//\\\\\\\\\\__
-________\/////////__\///__\///___\///___\///____\//////////___
-
-Lime Command-Line Tools (8.3.0)
-
-Initializing project...
-Using project file: C:\Src\ge\HaxeStackStarter\Server/project.xml
-Reading Lime config: C:\Users\Clay\.lime\config.xml
- - Detected host architecture: X64
-
-Running command: UPDATE
- - Writing file: Export/hl/bin/manifest/default.json
-
-Running command: BUILD
- - Copying library file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/ndll/Windows64/lime.hdll -> Export/hl/bin/lime.hdll
- - Copying library file: C:\Src\ge\HaxeStackStarter\Server\.haxelib\lime\8,3,0/ndll/Windows64/lime.lib -> Export/hl/bin/lime.lib
- - Running command: haxe Export/hl/haxe/release.hxml
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:23: characters 8-47 : Type not found : hx.well.http.driver.socket.SocketDriver
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:24: characters 8-53 : Type not found : hx.well.http.driver.socket.SocketDriverConfig
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:25: characters 8-54 : Type not found : hx.well.http.driver.socket.SocketRequestParser
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:26: characters 8-28 : Type not found : hx.well.http.Request
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:30: characters 8-34 : Type not found : hx.well.http.RequestStatic
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:31: characters 8-57 : Type not found : hx.well.http.driver.socket.SocketWebSocketHandler
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:32: characters 8-42 : Type not found : hx.well.websocket.WebSocketSession
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:33: characters 8-50 : Type not found : hx.well.websocket.AbstractWebSocketHandler
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:446: characters 13-29 : Type not found : WebSocketSession
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/core/WebServerFactory.hx:79: lines 79-80 : Void should be sidewinder.interfaces.IWebServer
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:16: characters 8-47 : Type not found : hx.well.http.driver.socket.SocketDriver
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:17: characters 8-54 : Type not found : hx.well.http.driver.socket.SocketRequestParser
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:18: characters 8-46 : Type not found : hx.well.http.driver.socket.SocketInput
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:19: characters 8-57 : Type not found : hx.well.http.driver.socket.SocketWebSocketHandler
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:20: characters 8-34 : Type not found : hx.well.http.RequestStatic
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/HxWellAdapter.hx:147: characters 40-49 : Type not found : HxRequest
-C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/adapters/CustomSocketDriver.hx:25: characters 34-46 : Type not found : SocketDriver
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/haxe-concurrent/5,1,5/src/hx/concurrent/internal/Macros.hx:35: [INFO] Setting compiler define 'threads'.
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/haxe-concurrent/5,1,5/src/hx/concurrent/internal/Macros.hx:35: [INFO] Setting compiler define 'threads'.
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/TemplateMacro.hx:60: C:/Src/ge/HaxeStackStarter/Server/resources/views/.gitkeep
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: sessionconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: providerconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: middlewareconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: instanceconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: httpconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/ConfigDataMacro.hx:17: databaseconfig
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/hxwell/git/src/hx/well/macro/CommandMacro.hx:9: StartServerCommand
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/auth/register -> register
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/auth/login -> login
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/auth/logout -> logout
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /api/auth/me -> getCurrentUser
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/auth/oauth/:provider -> oauthLogin
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/auth/link-oauth/:provider -> linkOAuthProvider
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/auth/change-password -> changePassword
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/auth/reset-password -> requestPasswordReset
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/auth/verify-email -> verifyEmail
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/auth/refresh -> refreshSession
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /pub/cms/page/:id -> getPage
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /pub/cms/page/slug/:*slug -> getPageBySlug
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/cms/page -> createPage
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: PUT /api/cms/page/:id -> updatePage
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /api/cms/pages -> listPages
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/cms/page/:pageId/version/:versionId/publish -> publishVersion
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/cms/version/:versionId/restore -> restoreVersion
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /api/cms/page/:pageId/versions -> listVersions
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/cms/asset -> uploadAsset
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /api/cms/asset/:assetId -> getAsset
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /api/cms/page/:pageId/assets -> listAssets
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/cms/validate -> validateComponents
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/cms/ai-prompt -> generateAiPrompt
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /api/cms/component-types -> getComponentTypes
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /pub/menus -> listMenus
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /api/menu/:id -> getMenu
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/menu -> createMenu
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: PUT /api/menu/:id -> updateMenu
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: DELETE /api/menu/:id -> deleteMenu
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /api/menu/:menuId/sections -> listSections
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/menu/:menuId/section -> createSection
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: PUT /api/menu/section/:id -> updateSection
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: DELETE /api/menu/section/:id -> deleteSection
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /api/menu/section/:sectionId/items -> listItems
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/menu/section/:sectionId/item -> createItem
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: PUT /api/menu/item/:id -> updateItem
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: DELETE /api/menu/item/:id -> deleteItem
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: GET /api/menu/item/:itemId/metadata -> listMetadata
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: POST /api/menu/item/:itemId/metadata -> createMetadata
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: PUT /api/menu/metadata/:id -> updateMetadata
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:360: AutoRouter registering: DELETE /api/menu/metadata/:id -> deleteMetadata
+Source/core/ServerBootstrap.hx:86: characters 122-132 : Null<Int> should be sidewinder.interfaces.IslandManager
+Source/core/ServerBootstrap.hx:86: characters 122-132 : ... For function argument 'islandManager'
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:209: characters 3-76 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:209: characters 3-76 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:209: characters 3-76 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:209: characters 3-76 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:209: characters 3-76 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:209: characters 3-76 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:209: characters 3-76 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:209: characters 3-76 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:209: characters 3-76 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:209: characters 3-76 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:210: characters 3-74 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:333: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
+C:/Src/ge/HaxeStackStarter/Server/.haxelib/SideWinder/git/Source/sidewinder/routing/AutoRouter.hx:301: characters 13-25 : Type not found : HybridLogger
+Source/app/ServerApp.hx:211: characters 3-84 : ... Called from macro here
