@@ -7,6 +7,7 @@
 	<source path="Source" />
     <source path="Source/core" />
     <source path="../Shared" />
+	<source path="Source/shim" if="html5" />
 	
 	<haxelib name="haxeui-openfl" unless="html5" />
     <haxelib name="haxeui-html5" if="html5" />
@@ -18,7 +19,7 @@
 	<assets path="Assets" />
 
     <define name="api_host" value="http://127.0.0.1:8000" />
-    <haxeflag name="--remap" value="sys.thread:app.shim.thread" unless="hl" />
+	<haxeflag name="--macro" value="allowPackage('sys')" />
 	
 	<!-- Post-build copy for HTML5 builds only -->
 	<postbuild command="copy-html5-build.bat" if="html5" />
