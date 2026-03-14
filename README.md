@@ -41,6 +41,27 @@ lime build html5
 ```
 *Client will launch in your default browser.*
 
+## Development Setup
+
+The project is split into a **Client** and a **Server**, each with its own VS Code workspace file. To develop effectively:
+
+1.  **Open Workspaces**: Open the `Server` directory in one VS Code instance and the `Client` directory in another.
+2.  **Dependencies**:
+    *   Open a terminal in the `Server` directory and run `hmm install`.
+    *   Open a terminal in the `Client` directory and run `hmm install`.
+    *   If a dependency changes, run `hmm reinstall`.
+
+## Debugging
+
+To debug the application:
+
+1.  **Select Target**: Open the workspace you want to debug (`Client` or `Server`).
+2.  **Lime Settings**: In the VS Code bottom bar, switch the output to **HashLink Debug** in the Lime settings.
+3.  **Launch**: Run the HashLink debugger for the selected target.
+
+> [!IMPORTANT]
+> **Debugging Limitation**: You cannot debug both the Client and the Server simultaneously due to a limitation with HashLink debugging. You must choose one to debug at a time.
+
 ## Repository Structure
 
 *   **/Server**: HashLink-based server application.
